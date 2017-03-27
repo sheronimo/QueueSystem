@@ -33,7 +33,7 @@ namespace CustFrontScreen
 			//
 		}
 
-        private void takeQueueNumButton_Click(object sender, EventArgs e)
+        private void TakeNumButtonClick(object sender, EventArgs e)
         {
             using (SqlConnection conn = new SqlConnection("Data Source=WALUIGI-PC\\SQLEXPRESS;Initial Catalog=SHERBASE;Integrated Security=True"))
             {
@@ -47,6 +47,11 @@ namespace CustFrontScreen
             }
 
             counter = counter + 1;
+        }
+
+        private void ExitButtonClick(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

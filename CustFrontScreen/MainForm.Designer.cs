@@ -14,7 +14,7 @@ namespace CustFrontScreen
 		/// Designer variable used to keep track of non-visual components.
 		/// </summary>
 		private System.ComponentModel.IContainer components = null;
-		private System.Windows.Forms.Button takeQueueNumButton;
+		private System.Windows.Forms.Button takeNumButton;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -37,30 +37,58 @@ namespace CustFrontScreen
 		/// </summary>
 		private void InitializeComponent()
 		{
-            this.takeQueueNumButton = new System.Windows.Forms.Button();
+            this.takeNumButton = new System.Windows.Forms.Button();
+            this.exitButton = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // takeQueueNumButton
+            // takeNumButton
             // 
-            this.takeQueueNumButton.Location = new System.Drawing.Point(75, 33);
-            this.takeQueueNumButton.Name = "takeQueueNumButton";
-            this.takeQueueNumButton.Size = new System.Drawing.Size(128, 128);
-            this.takeQueueNumButton.TabIndex = 0;
-            this.takeQueueNumButton.Text = "button1";
-            this.takeQueueNumButton.UseVisualStyleBackColor = true;
-            this.takeQueueNumButton.Click += new System.EventHandler(this.takeQueueNumButton_Click);
+            this.takeNumButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.takeNumButton.Location = new System.Drawing.Point(93, 60);
+            this.takeNumButton.Name = "takeNumButton";
+            this.takeNumButton.Size = new System.Drawing.Size(180, 180);
+            this.takeNumButton.TabIndex = 0;
+            this.takeNumButton.Text = "Take Number";
+            this.takeNumButton.UseVisualStyleBackColor = true;
+            this.takeNumButton.Click += new System.EventHandler(this.TakeNumButtonClick);
+            // 
+            // exitButton
+            // 
+            this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exitButton.Location = new System.Drawing.Point(607, 384);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(85, 45);
+            this.exitButton.TabIndex = 1;
+            this.exitButton.Text = "Exit";
+            this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.Click += new System.EventHandler(this.ExitButtonClick);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(425, 124);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(126, 53);
+            this.textBox1.TabIndex = 2;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(554, 311);
+            this.ClientSize = new System.Drawing.Size(704, 441);
             this.ControlBox = false;
-            this.Controls.Add(this.takeQueueNumButton);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.exitButton);
+            this.Controls.Add(this.takeNumButton);
             this.Name = "MainForm";
-            this.Text = "CustFrontScreen";
+            this.Text = "Qbe - Front Screen";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
-	}
+
+        private System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.TextBox textBox1;
+    }
 }

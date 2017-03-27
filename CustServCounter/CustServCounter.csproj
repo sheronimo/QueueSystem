@@ -61,11 +61,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="res\recall.png">
-      <Link>recall.png</Link>
-    </None>
+    <Resource Include="res\recall.png">
+    </Resource>
     <Resource Include="res\call.png">
-      <Link>call.png</Link>
     </Resource>
   </ItemGroup>
   <ItemGroup>
