@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+# SharpDevelop 5.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustServCounter", "CustServCounter\CustServCounter.csproj", "{F43C7C99-E8F5-4F55-A4B0-61916506739F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustFrontScreen", "CustFrontScreen\CustFrontScreen.csproj", "{B3394B7A-2B88-4D49-A240-494B7932DC0C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F43C7C99-E8F5-4F55-A4B0-61916506739F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F43C7C99-E8F5-4F55-A4B0-61916506739F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F43C7C99-E8F5-4F55-A4B0-61916506739F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F43C7C99-E8F5-4F55-A4B0-61916506739F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3394B7A-2B88-4D49-A240-494B7932DC0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3394B7A-2B88-4D49-A240-494B7932DC0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3394B7A-2B88-4D49-A240-494B7932DC0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3394B7A-2B88-4D49-A240-494B7932DC0C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
