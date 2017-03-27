@@ -71,7 +71,7 @@ namespace CustServCounter
 					
 					while((line = sr.ReadLine()) != null)
 					{
-						if(line.Trim != String.Empty)
+						if(!line.Trim().Equals(String.Empty))
 							lineCount = lineCount + 1;
 					}
 				}
