@@ -3,8 +3,8 @@
  * Date: 23/3/2017
  * Version: 2.5
  * Time: 9:07 AM
- * 
- * To change this template use Tools | Options | Coding | Edit Standard Headers.
+ * Brief: Class for the Customer Service Form methods.
+ * Description: This class contains the methods and event handlers for the Customer Service Counter's main form.
  */
 
 using System;
@@ -15,12 +15,11 @@ using System.Windows.Forms;
 namespace CustServCounter
 {
 	/// <summary>
-	/// Description of CustServForm.
+	/// CustServForm is the main form for the Customer Service Counter application.
 	/// </summary>
 	public partial class CustServForm : Form
 	{
 		Timer timer = new Timer {Interval = 500};
-		const string path = "queue.txt";
 		
 		public CustServForm()
 		{
@@ -63,6 +62,7 @@ namespace CustServCounter
 		{
 			int lineCount = 0;
 			
+            /*
 			using(FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
 			{
 				using(StreamReader sr = new StreamReader(fs))
@@ -78,6 +78,7 @@ namespace CustServCounter
 			}
 			
 			queueTotalTextBox.Text = lineCount.ToString();
+            */
 		}
 		
 		

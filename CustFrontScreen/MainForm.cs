@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace CustFrontScreen
 {
@@ -18,6 +19,8 @@ namespace CustFrontScreen
 	/// </summary>
 	public partial class MainForm : Form
 	{
+        int counter = 1;
+
 		public MainForm()
 		{
 			//
@@ -29,5 +32,21 @@ namespace CustFrontScreen
 			// TODO: Add constructor code after the InitializeComponent() call.
 			//
 		}
-	}
+
+        private void takeQueueNumButton_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection conn = new SqlConnection("Data Source=WALUIGI-PC\\SQLEXPRESS;Initial Catalog=SHERBASE;Integrated Security=True"))
+            {
+                conn.Open();
+
+                using (SqlCommand command = new SqlCommand("INSERT INTO QUEUE VALUES(@QueueNum)", conn))
+                {
+                    command.Parameters.Add(new SqlParameter("QueueNum", counter));
+                    command.ExecuteNonQuery();
+                }
+            }
+
+            counter = counter + 1;
+        }
+    }
 }

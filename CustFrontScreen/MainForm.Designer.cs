@@ -37,28 +37,29 @@ namespace CustFrontScreen
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.takeQueueNumButton = new System.Windows.Forms.Button();
-			this.SuspendLayout();
-			// 
-			// takeQueueNumButton
-			// 
-			this.takeQueueNumButton.Location = new System.Drawing.Point(75, 33);
-			this.takeQueueNumButton.Name = "takeQueueNumButton";
-			this.takeQueueNumButton.Size = new System.Drawing.Size(128, 128);
-			this.takeQueueNumButton.TabIndex = 0;
-			this.takeQueueNumButton.Text = "button1";
-			this.takeQueueNumButton.UseVisualStyleBackColor = true;
-			// 
-			// MainForm
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(554, 311);
-			this.ControlBox = false;
-			this.Controls.Add(this.takeQueueNumButton);
-			this.Name = "MainForm";
-			this.Text = "CustFrontScreen";
-			this.ResumeLayout(false);
+            this.takeQueueNumButton = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // takeQueueNumButton
+            // 
+            this.takeQueueNumButton.Location = new System.Drawing.Point(75, 33);
+            this.takeQueueNumButton.Name = "takeQueueNumButton";
+            this.takeQueueNumButton.Size = new System.Drawing.Size(128, 128);
+            this.takeQueueNumButton.TabIndex = 0;
+            this.takeQueueNumButton.Text = "button1";
+            this.takeQueueNumButton.UseVisualStyleBackColor = true;
+            this.takeQueueNumButton.Click += new System.EventHandler(this.takeQueueNumButton_Click);
+            // 
+            // MainForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(554, 311);
+            this.ControlBox = false;
+            this.Controls.Add(this.takeQueueNumButton);
+            this.Name = "MainForm";
+            this.Text = "CustFrontScreen";
+            this.ResumeLayout(false);
 
 		}
 	}
