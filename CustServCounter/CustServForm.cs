@@ -11,6 +11,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace CustServCounter
 {
@@ -59,26 +60,17 @@ namespace CustServCounter
 		/// to the control/object that sent the event.</param>
 		/// <param name="e">Parameter that contains event data.</param>
 		void TimerTick(object sender, EventArgs e)
-		{
-			int lineCount = 0;
-			
-            /*
-			using(FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
-			{
-				using(StreamReader sr = new StreamReader(fs))
-				{
-					string line;
-					
-					while((line = sr.ReadLine()) != null)
-					{
-						if(!line.Trim().Equals(String.Empty))
-							lineCount = lineCount + 1;
-					}
-				}
-			}
-			
-			queueTotalTextBox.Text = lineCount.ToString();
-            */
+		{	
+            using(SqlConnection conn = new SqlConnection("Data Source=WALUIGI-PC\\SQLEXPRESS;Initial Catalog=SHERBASE;Integrated Security=True"))
+            {
+                conn.Open();
+
+                using (SqlCommand command = new SqlCommand("SELECT COUNT(QueueNum) FROM QUEUE", conn))
+                {
+                    int totalQueue = Convert.ToInt32(command.ExecuteScalar());
+                    queueTotalTextBox.Text = totalQueue.ToString();
+                }
+            }
 		}
 		
 		
@@ -143,7 +135,29 @@ namespace CustServCounter
 		/// <param name="e">Parameter that contains event data.</param>
 		void CallButtonClick(object sender, EventArgs e)
 		{
-			
+            using (SqlConnection conn = new SqlConnection("Data Source=WALUIGI-PC\\SQLEXPRESS;Initial Catalog=SHERBASE;Integrated Security=True"))
+            {
+                conn.Open();
+
+                using (SqlCommand comm2 = new SqlCommand("SELECT TOP(1) QueueNum FROM QUEUE", conn))
+                {
+                    int currServ = Convert.ToInt32(comm2.ExecuteScalar());
+
+                    if (currServ > 0)
+                    {
+                        currServTextBox.Text = currServ.ToString();
+                        using (SqlCommand comm3 = new SqlCommand("DELETE TOP(1) FROM QUEUE", conn))
+                        {
+                            comm3.ExecuteNonQuery();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No one waiting!");
+                        currServTextBox.Text = "0";
+                    }
+                }
+            }   
 		}
 		
 	}
