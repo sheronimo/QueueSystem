@@ -8,15 +8,13 @@
  */
 
 using System;
-using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
 namespace CustServCounter
 {
 	/// <summary>
-	/// CustServForm is the main form for the Customer Service Counter application.
+	/// 
 	/// </summary>
 	public partial class CustServForm : Form
 	{
@@ -29,8 +27,7 @@ namespace CustServCounter
 		}
 		
 		/// <summary>
-		/// This function is an event handler for the loading of the form.
-		/// This event handler initialises and starts the timer.
+        /// Initialises and starts timer upon form load.
 		/// </summary>
 		/// <param name="sender">Parameter that contains a reference
 		/// to the control/object that contains event data.</param>
@@ -42,8 +39,7 @@ namespace CustServCounter
 		}
 		
 		/// <summary>
-		/// This function is an event handler for the Exit submenu item in the menu toolstrip.
-		/// This event handler exits the entire application.
+        /// Fully exits program when tool strip button is clicked.
 		/// </summary>
 		/// <param name="sender">Parameter that contains a reference 
 		/// to the control/object that sent the event.</param>
@@ -61,17 +57,17 @@ namespace CustServCounter
 		/// <param name="e">Parameter that contains event data.</param>
 		void TimerTick(object sender, EventArgs e)
 		{	
-            using(SqlConnection conn = new SqlConnection("Data Source=WALUIGI-PC\\SQLEXPRESS;Initial Catalog=SHERBASE;Integrated Security=True"))
+            using(SqlConnection connect = new SqlConnection("Data Source=WALUIGI-PC\\SQLEXPRESS;Initial Catalog=SHERBASE;Integrated Security=True"))
             {
-                conn.Open();
+                connect.Open();
 
-                using (SqlCommand command = new SqlCommand("SELECT COUNT(QueueNum) FROM QUEUE", conn))
+                using (SqlCommand command = new SqlCommand("SELECT COUNT(QueueNum) FROM QUEUE", connect))
                 {
                     int totalQueue = Convert.ToInt32(command.ExecuteScalar());
                     queueTotalTextBox.Text = totalQueue.ToString();
-                }
-            }
-		}
+                }//end command
+            }// end connect
+		}// end TimerTick
 		
 		
 		/// <summary>
@@ -93,7 +89,7 @@ namespace CustServCounter
 		}
 		
 		/// <summary>
-		/// This function will uncheck all items in the submenu except for the selected item.
+		/// Unchecks all items in submenu except for the selected item.
 		/// </summary>
 		/// <param name="parentMenuItem">The parent menu item which points to
 		/// the submenu containing the list of items.</param>
@@ -106,9 +102,9 @@ namespace CustServCounter
 				{
 					ToolStripMenuItem childMenuItem = childItem as ToolStripMenuItem;
 					childMenuItem.Checked = (childMenuItem == checkedMenuItem);
-				}
-			}
-		}
+				}// end if
+			}// end foreach
+		}// end CheckMenuItem
 		
 		/// <summary>
 		/// This function is an event handler that acts to prevent the application from closing 
@@ -135,30 +131,28 @@ namespace CustServCounter
 		/// <param name="e">Parameter that contains event data.</param>
 		void CallButtonClick(object sender, EventArgs e)
 		{
-            using (SqlConnection conn = new SqlConnection("Data Source=WALUIGI-PC\\SQLEXPRESS;Initial Catalog=SHERBASE;Integrated Security=True"))
+            using (SqlConnection connect = new SqlConnection("Data Source=WALUIGI-PC\\SQLEXPRESS;Initial Catalog=SHERBASE;Integrated Security=True"))
             {
-                conn.Open();
+                connect.Open();
 
-                using (SqlCommand comm2 = new SqlCommand("SELECT TOP(1) QueueNum FROM QUEUE", conn))
+                using (SqlCommand selectCommand = new SqlCommand("SELECT TOP(1) QueueNum FROM QUEUE", connect))
                 {
-                    int currServ = Convert.ToInt32(comm2.ExecuteScalar());
+                    int currServ = Convert.ToInt32(selectCommand.ExecuteScalar());
 
                     if (currServ > 0)
                     {
                         currServTextBox.Text = currServ.ToString();
-                        using (SqlCommand comm3 = new SqlCommand("DELETE TOP(1) FROM QUEUE", conn))
+                        using (SqlCommand deleteCommand = new SqlCommand("DELETE TOP(1) FROM QUEUE", connect))
                         {
-                            comm3.ExecuteNonQuery();
+                            deleteCommand.ExecuteNonQuery();
                         }
                     }
                     else
                     {
                         MessageBox.Show("No one waiting!");
-                        currServTextBox.Text = "0";
                     }
-                }
-            }   
-		}
-		
-	}
+                }// end selectCommand
+            }// end sql connect   
+		}// end CallButtonClick
+	}//end CustServForm : Form
 }

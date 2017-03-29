@@ -71,7 +71,7 @@ namespace CustFrontScreen
         /// <param name="e">Parameter containing event data.</param>
         private void ExitButtonClick(object sender, EventArgs e)
         {
-            Form1 frm = new Form1();
+            PassVerifForm frm = new PassVerifForm();
             frm.Show();
         }
 
@@ -84,7 +84,7 @@ namespace CustFrontScreen
         private void MainFormLoad(object sender, EventArgs e)
         {
             queueNumTextBox.Text = counter.ToString();
-            myTimer.Tick += new EventHandler(myTimerTick);
+            myTimer.Tick += new EventHandler(MyTimerTick);
             myTimer.Start();
         }
 
@@ -94,19 +94,19 @@ namespace CustFrontScreen
         /// <param name="sender">Parameter containing a reference
         /// to the control/object that contains event data.</param>
         /// <param name="e">Parameter containing event data.</param>
-        void myTimerTick(object sender, EventArgs e)
+        void MyTimerTick(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection("Data Source=WALUIGI-PC\\SQLEXPRESS;Initial Catalog=SHERBASE;Integrated Security=True"))
+            using (SqlConnection connect = new SqlConnection("Data Source=WALUIGI-PC\\SQLEXPRESS;Initial Catalog=SHERBASE;Integrated Security=True"))
             {
-                conn.Open();
+                connect.Open();
 
-                using (SqlCommand command = new SqlCommand("SELECT COUNT(QueueNum) FROM QUEUE", conn))
+                using (SqlCommand command = new SqlCommand("SELECT COUNT(QueueNum) FROM QUEUE", connect))
                 {
                     int totalQueue = Convert.ToInt32(command.ExecuteScalar());
                     totalQueueTextBox.Text = totalQueue.ToString();
-                }
-            }
-        }
+                }// end command
+            }// end connect
+        }// end MyTimerTick
 
         /// <summary>
         /// Prevents the application from exiting through Alt-F4.
@@ -119,7 +119,7 @@ namespace CustFrontScreen
             if(e.KeyCode == Keys.F4 && e.Alt)
             {
                 e.SuppressKeyPress = true;
-            }
-        }
-    }
+            }// end if
+        }// end MainFormKeyDown
+    }// end partial class
 }

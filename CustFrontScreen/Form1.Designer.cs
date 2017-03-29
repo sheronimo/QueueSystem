@@ -1,6 +1,6 @@
 ﻿namespace CustFrontScreen
 {
-    partial class Form1
+    partial class PassVerifForm
     {
         /// <summary>
         /// Required designer variable.
@@ -49,7 +49,7 @@
             this.passTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passTextBox.Location = new System.Drawing.Point(10, 46);
             this.passTextBox.Name = "passTextBox";
-            this.passTextBox.PasswordChar = '*';
+            this.passTextBox.PasswordChar = '•';
             this.passTextBox.Size = new System.Drawing.Size(212, 26);
             this.passTextBox.TabIndex = 1;
             // 
@@ -61,9 +61,9 @@
             this.passVerifButton.TabIndex = 2;
             this.passVerifButton.Text = "Enter!";
             this.passVerifButton.UseVisualStyleBackColor = true;
-            this.passVerifButton.Click += new System.EventHandler(this.passVerifButtonClick);
+            this.passVerifButton.Click += new System.EventHandler(this.PassVerifButtonClick);
             // 
-            // Form1
+            // PassVerifForm
             // 
             this.AcceptButton = this.passVerifButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -72,9 +72,9 @@
             this.Controls.Add(this.passVerifButton);
             this.Controls.Add(this.passTextBox);
             this.Controls.Add(this.warningLabel);
-            this.Name = "Form1";
+            this.Name = "PassVerifForm";
             this.Text = "Qbe - Password Verification";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1KeyDown);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PassVerifFormKeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
