@@ -39,7 +39,10 @@ namespace CustFrontScreen
 		{
             this.takeNumButton = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.queueNumTextBox = new System.Windows.Forms.TextBox();
+            this.arrowLabel = new System.Windows.Forms.Label();
+            this.totalQueueLabel = new System.Windows.Forms.Label();
+            this.totalQueueTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // takeNumButton
@@ -64,13 +67,45 @@ namespace CustFrontScreen
             this.exitButton.UseVisualStyleBackColor = true;
             this.exitButton.Click += new System.EventHandler(this.ExitButtonClick);
             // 
-            // textBox1
+            // queueNumTextBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(425, 124);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(126, 53);
-            this.textBox1.TabIndex = 2;
+            this.queueNumTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.queueNumTextBox.Location = new System.Drawing.Point(425, 124);
+            this.queueNumTextBox.Name = "queueNumTextBox";
+            this.queueNumTextBox.ReadOnly = true;
+            this.queueNumTextBox.Size = new System.Drawing.Size(130, 53);
+            this.queueNumTextBox.TabIndex = 2;
+            this.queueNumTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // arrowLabel
+            // 
+            this.arrowLabel.AutoSize = true;
+            this.arrowLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.arrowLabel.Location = new System.Drawing.Point(314, 127);
+            this.arrowLabel.Name = "arrowLabel";
+            this.arrowLabel.Size = new System.Drawing.Size(66, 46);
+            this.arrowLabel.TabIndex = 3;
+            this.arrowLabel.Text = "⟶";
+            // 
+            // totalQueueLabel
+            // 
+            this.totalQueueLabel.AutoSize = true;
+            this.totalQueueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalQueueLabel.Location = new System.Drawing.Point(87, 302);
+            this.totalQueueLabel.Name = "totalQueueLabel";
+            this.totalQueueLabel.Size = new System.Drawing.Size(269, 31);
+            this.totalQueueLabel.TabIndex = 4;
+            this.totalQueueLabel.Text = "Current Total Queue:";
+            // 
+            // totalQueueTextBox
+            // 
+            this.totalQueueTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalQueueTextBox.Location = new System.Drawing.Point(425, 288);
+            this.totalQueueTextBox.Name = "totalQueueTextBox";
+            this.totalQueueTextBox.ReadOnly = true;
+            this.totalQueueTextBox.Size = new System.Drawing.Size(130, 53);
+            this.totalQueueTextBox.TabIndex = 5;
+            this.totalQueueTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // MainForm
             // 
@@ -78,17 +113,24 @@ namespace CustFrontScreen
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(704, 441);
             this.ControlBox = false;
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.totalQueueTextBox);
+            this.Controls.Add(this.totalQueueLabel);
+            this.Controls.Add(this.arrowLabel);
+            this.Controls.Add(this.queueNumTextBox);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.takeNumButton);
             this.Name = "MainForm";
             this.Text = "Qbe - Front Screen";
+            this.Load += new System.EventHandler(this.MainFormLoad);
             this.ResumeLayout(false);
             this.PerformLayout();
 
 		}
 
         private System.Windows.Forms.Button exitButton;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox queueNumTextBox;
+        private System.Windows.Forms.Label arrowLabel;
+        private System.Windows.Forms.Label totalQueueLabel;
+        private System.Windows.Forms.TextBox totalQueueTextBox;
     }
 }

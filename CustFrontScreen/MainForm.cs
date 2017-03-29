@@ -1,10 +1,10 @@
 ﻿/*
- * Created by SharpDevelop.
- * User: waluigi
- * Date: 23-Mar-17
+ * Author: sd
+ * Date: 23/3/2017
+ * Version: 2.5
  * Time: 3:52 PM
  * 
- * To change this template use Tools | Options | Coding | Edit Standard Headers.
+ * 
  */
 using System;
 using System.Collections.Generic;
@@ -20,6 +20,7 @@ namespace CustFrontScreen
 	public partial class MainForm : Form
 	{
         int counter = 1;
+        Timer myTimer = new Timer { Interval = 500 };
 
 		public MainForm()
 		{
@@ -46,12 +47,34 @@ namespace CustFrontScreen
                 }
             }
 
+            queueNumTextBox.Text = counter.ToString();
+
             counter = counter + 1;
         }
 
         private void ExitButtonClick(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void MainFormLoad(object sender, EventArgs e)
+        {
+            myTimer.Tick += new EventHandler(myTimerTick);
+            myTimer.Start();
+        }
+
+        void myTimerTick(object sender, EventArgs e)
+        {
+            using (SqlConnection conn = new SqlConnection("Data Source=WALUIGI-PC\\SQLEXPRESS;Initial Catalog=SHERBASE;Integrated Security=True"))
+            {
+                conn.Open();
+
+                using (SqlCommand command = new SqlCommand("SELECT COUNT(QueueNum) FROM QUEUE", conn))
+                {
+                    int totalQueue = Convert.ToInt32(command.ExecuteScalar());
+                    totalQueueTextBox.Text = totalQueue.ToString();
+                }
+            }
         }
     }
 }
