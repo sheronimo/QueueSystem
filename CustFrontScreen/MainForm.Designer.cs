@@ -122,6 +122,7 @@ namespace CustFrontScreen
             this.Name = "MainForm";
             this.Text = "Qbe - Front Screen";
             this.Load += new System.EventHandler(this.MainFormLoad);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainFormKeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

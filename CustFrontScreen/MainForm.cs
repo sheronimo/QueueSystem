@@ -54,7 +54,8 @@ namespace CustFrontScreen
 
         private void ExitButtonClick(object sender, EventArgs e)
         {
-            Application.Exit();
+            Form1 frm = new Form1();
+            frm.Show();
         }
 
         private void MainFormLoad(object sender, EventArgs e)
@@ -74,6 +75,14 @@ namespace CustFrontScreen
                     int totalQueue = Convert.ToInt32(command.ExecuteScalar());
                     totalQueueTextBox.Text = totalQueue.ToString();
                 }
+            }
+        }
+
+        private void MainFormKeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.F4 && e.Alt)
+            {
+                e.SuppressKeyPress = true;
             }
         }
     }
