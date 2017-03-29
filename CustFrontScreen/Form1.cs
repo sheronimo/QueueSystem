@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+ * Author: sd
+ * Date: 29/3/2017
+ * Time: 12:48 PM
+ * Version: 3.0
+ * Brief: 
+ */
+
+using System;
 using System.Windows.Forms;
 
 namespace CustFrontScreen

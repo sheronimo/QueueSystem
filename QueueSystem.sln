@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustServCounter", "CustServ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustFrontScreen", "CustFrontScreen\CustFrontScreen.csproj", "{B3394B7A-2B88-4D49-A240-494B7932DC0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TVScreenDisplay", "TVScreenDisplay\TVScreenDisplay.csproj", "{4FAF76E1-065A-4DF3-9C8E-4976F49D2666}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{B3394B7A-2B88-4D49-A240-494B7932DC0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3394B7A-2B88-4D49-A240-494B7932DC0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3394B7A-2B88-4D49-A240-494B7932DC0C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4FAF76E1-065A-4DF3-9C8E-4976F49D2666}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4FAF76E1-065A-4DF3-9C8E-4976F49D2666}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4FAF76E1-065A-4DF3-9C8E-4976F49D2666}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4FAF76E1-065A-4DF3-9C8E-4976F49D2666}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
