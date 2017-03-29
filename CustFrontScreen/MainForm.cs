@@ -26,8 +26,6 @@ namespace CustFrontScreen
         
         /// <summary>
         /// Default constructor for the form class.
-        /// InitializeComponent() refers to the method in the designer class
-        /// that draws the form itself, as well as its components.
         /// </summary>
 		public MainForm()
 		{
@@ -35,29 +33,28 @@ namespace CustFrontScreen
 		}
 
         /// <summary>
-        /// This event handler method is called when the customer clicks the TakeNumButton.
-        /// This method connects to the QUEUE table in the database using SQL, and adds
-        /// the queue number value (contained in "counter") to the QueueNum column.
-        /// The aforementioned queue number is also displayed on the screen
-        /// next to the "Take Number" button, so the customer can view
-        /// what their queue number will be.
+        /// Called when customer clicks TakeNumButton.
+        /// Method adds queue number to DB table to be used by other programs.
+        /// Queue number is also displayed for customers' convenience.
         /// </summary>
         /// <param name="sender">Parameter containing a reference
         /// to the control/object that contains event data.</param>
         /// <param name="e">Parameter containing event data.</param>
         private void TakeNumButtonClick(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection("Data Source=WALUIGI-PC\\SQLEXPRESS;Initial Catalog=SHERBASE;Integrated Security=True"))
+            using (SqlConnection connect = new SqlConnection("Data Source=WALUIGI-PC\\SQLEXPRESS;Initial Catalog=SHERBASE;Integrated Security=True"))
             {
-                conn.Open();
+                connect.Open();
 
-                using (SqlCommand command = new SqlCommand("INSERT INTO QUEUE VALUES(@QueueNum)", conn))
+                using (SqlCommand command = new SqlCommand("INSERT INTO QUEUE VALUES(@QueueNum)", connect))
                 {
+                    // parameterised to prevent SQL injection
                     command.Parameters.Add(new SqlParameter("QueueNum", counter));
                     command.ExecuteNonQuery();
                 }
             }
 
+            // increments for next customer
             counter = counter + 1;
 
             if (counter > 1)
@@ -67,9 +64,7 @@ namespace CustFrontScreen
         }
 
         /// <summary>
-        /// This event handler method is called when the Exit button on the
-        /// bottom right of the form is clicked.
-        /// It calls and displays the password verification form.
+        /// Calls and displays password verification form when Exit button is clicked.
         /// </summary>
         /// <param name="sender">Parameter containing a reference
         /// to the control/object that contains event data.</param>
@@ -81,7 +76,7 @@ namespace CustFrontScreen
         }
 
         /// <summary>
-        /// 
+        /// Initialises queue number and timer when program loads.
         /// </summary>
         /// <param name="sender">Parameter containing a reference
         /// to the control/object that contains event data.</param>
@@ -94,10 +89,11 @@ namespace CustFrontScreen
         }
 
         /// <summary>
-        /// 
+        /// Refreshes display of total number of people waiting to be served.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Parameter containing a reference
+        /// to the control/object that contains event data.</param>
+        /// <param name="e">Parameter containing event data.</param>
         void myTimerTick(object sender, EventArgs e)
         {
             using (SqlConnection conn = new SqlConnection("Data Source=WALUIGI-PC\\SQLEXPRESS;Initial Catalog=SHERBASE;Integrated Security=True"))
@@ -113,9 +109,7 @@ namespace CustFrontScreen
         }
 
         /// <summary>
-        /// This event handler method is called when Alt-F4 is pressed anywhere in the form.
-        /// It prevents the application from exiting through Alt-F4.
-        /// Take that, kids.
+        /// Prevents the application from exiting through Alt-F4.
         /// </summary>
         /// <param name="sender">Parameter containing a reference
         /// to the control/object that contains event data.</param>

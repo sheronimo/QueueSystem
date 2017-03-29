@@ -73,7 +73,7 @@
             this.Controls.Add(this.passTextBox);
             this.Controls.Add(this.warningLabel);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Qbe - Password Verification";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();

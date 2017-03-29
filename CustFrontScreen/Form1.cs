@@ -1,21 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace CustFrontScreen
 {
     public partial class Form1 : Form
     {
+        /// <summary>
+        /// Default constructor for the form class.
+        /// </summary>
         public Form1()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Verifies password entered to exit the application.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void passVerifButtonClick(object sender, EventArgs e)
         {
             if(passTextBox.Text.Equals("0012"))
@@ -28,6 +30,11 @@ namespace CustFrontScreen
             }
         }
 
+        /// <summary>
+        /// Prevents application from exiting if Alt-F4 is pressed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Form1KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode == Keys.F4 && e.Alt)
