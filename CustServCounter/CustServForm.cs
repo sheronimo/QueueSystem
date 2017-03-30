@@ -19,6 +19,7 @@ namespace CustServCounter
 	public partial class CustServForm : Form
 	{
 		Timer timer = new Timer {Interval = 500};
+
 		
 		public CustServForm()
 		{
@@ -131,6 +132,7 @@ namespace CustServCounter
 		/// <param name="e">Parameter that contains event data.</param>
 		void CallButtonClick(object sender, EventArgs e)
 		{
+
             using (SqlConnection connect = new SqlConnection("Data Source=WALUIGI-PC\\SQLEXPRESS;Initial Catalog=SHERBASE;Integrated Security=True"))
             {
                 connect.Open();
@@ -142,6 +144,7 @@ namespace CustServCounter
                     if (currServ > 0)
                     {
                         currServTextBox.Text = currServ.ToString();
+
                         using (SqlCommand deleteCommand = new SqlCommand("DELETE TOP(1) FROM QUEUE", connect))
                         {
                             deleteCommand.ExecuteNonQuery();
@@ -151,7 +154,35 @@ namespace CustServCounter
                     {
                         MessageBox.Show("No one waiting!");
                     }
-                }// end selectCommand
+
+                    using (SqlCommand insertCommand = new SqlCommand("UPDATE CURRENTQUEUE SET QUEUENUMBER = @QueueNumber WHERE CSNum = @CSNum", connect))
+                    {
+                        insertCommand.Parameters.Add(new SqlParameter("QueueNumber", currServ));
+
+                        if(csIDTextBox.Text.Equals("01"))
+                        {
+                            insertCommand.Parameters.Add(new SqlParameter("CSNum", 1));
+                        }
+                        else if (csIDTextBox.Text.Equals("02"))
+                        {
+                            insertCommand.Parameters.Add(new SqlParameter("CSNum", 2));
+                        }
+                        else if (csIDTextBox.Text.Equals("03"))
+                        {
+                            insertCommand.Parameters.Add(new SqlParameter("CSNum", 3));
+                        }
+                        else if (csIDTextBox.Text.Equals("04"))
+                        {
+                            insertCommand.Parameters.Add(new SqlParameter("CSNum", 4));
+                        }
+                        else if (csIDTextBox.Text.Equals("05"))
+                        {
+                            insertCommand.Parameters.Add(new SqlParameter("CSNum", 5));
+                        }
+
+                        insertCommand.ExecuteNonQuery();
+                    }
+                }// end selectCommand                
             }// end sql connect   
 		}// end CallButtonClick
 	}//end CustServForm : Form
