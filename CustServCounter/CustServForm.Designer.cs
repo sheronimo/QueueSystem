@@ -263,7 +263,7 @@ namespace CustServCounter
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "CustServForm";
             this.Text = "Qbe - CS Counter";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CustServFormFormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CustServFormClosing);
             this.Load += new System.EventHandler(this.CustServFormLoad);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

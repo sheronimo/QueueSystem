@@ -11,6 +11,12 @@ using System.Windows.Forms;
 
 namespace CustReceptionArea
 {
+    /// <summary>
+    /// This form is to verify that the correct password has been entered
+    /// in order to exit the main CustQueueForm application.
+    /// This is to prevent unauthorised individuals (i.e.
+    /// non-staff members) from exiting the program.
+    /// </summary>
     public partial class PassVerifForm : Form
     {
         /// <summary>
@@ -22,11 +28,8 @@ namespace CustReceptionArea
         }
 
         /// <summary>
-        /// Verifies password entered to exit the application.
+        /// Validates password entered to exit the application.
         /// </summary>
-        /// <param name="sender">Parameter that contains a reference
-		/// to the control/object that sent the event.</param>
-        /// <param name="e">Parameter that contains event data.</param>
         private void PassVerifButtonClick(object sender, EventArgs e)
         {
             if(passTextBox.Text.Equals("0012"))
@@ -43,9 +46,6 @@ namespace CustReceptionArea
         /// <summary>
         /// Prevents application from exiting if Alt-F4 is pressed.
         /// </summary>
-        /// <param name="sender">Parameter that contains a reference
-		/// to the control/object that sent the event.</param>
-        /// <param name="e">Parameter that contains event data.</param>
         private void PassVerifFormKeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode == Keys.F4 && e.Alt)

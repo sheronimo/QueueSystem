@@ -80,7 +80,7 @@ namespace CustReceptionArea
         }
 
         /// <summary>
-        /// Refreshes display of total number of people waiting to be served.
+        /// Updates (per tick) display of total number of people waiting to be served.
         /// </summary>
         void TimerTick(object sender, EventArgs e)
         {
