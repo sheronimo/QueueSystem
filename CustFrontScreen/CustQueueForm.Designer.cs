@@ -6,9 +6,9 @@
  * 
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
-namespace CustFrontScreen
+namespace CustReceptionArea
 {
-	partial class MainForm
+	partial class CustQueueForm
 	{
 		/// <summary>
 		/// Designer variable used to keep track of non-visual components.
@@ -120,9 +120,9 @@ namespace CustFrontScreen
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.takeNumButton);
             this.Name = "MainForm";
-            this.Text = "Qbe - Front Screen";
-            this.Load += new System.EventHandler(this.MainFormLoad);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainFormKeyDown);
+            this.Text = "Qbe - Reception Area";
+            this.Load += new System.EventHandler(this.CustQueueFormLoad);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CustQueueFormKeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

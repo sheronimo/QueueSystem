@@ -3,13 +3,13 @@
  * Date: 29/3/2017
  * Time: 12:48 PM
  * Version: 3.0
- * Brief: Class for password verification to exit Front Screen main application. 
+ * Brief: Class for password verification to exit Front Screen application. 
  */
 
 using System;
 using System.Windows.Forms;
 
-namespace CustFrontScreen
+namespace CustReceptionArea
 {
     public partial class PassVerifForm : Form
     {

@@ -1,4 +1,4 @@
-﻿namespace CustFrontScreen
+﻿namespace CustReceptionArea
 {
     partial class PassVerifForm
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace CustFrontScreen
+namespace CustReceptionArea
 {
 	/// <summary>
 	/// Class with program entry point.
@@ -16,7 +16,7 @@ namespace CustFrontScreen
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new MainForm());
+			Application.Run(new CustQueueForm());
 		}
 		
 	}
