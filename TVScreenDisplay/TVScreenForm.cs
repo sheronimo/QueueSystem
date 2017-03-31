@@ -13,6 +13,11 @@ using System.Data.SqlClient;
 
 namespace TVScreenDisplay
 {
+    /// <summary>
+    /// This form merely displays the CS counter #s and the queue number
+    /// of the customer that they are currently serving (or waiting to serve).
+    /// There is no user interactivity.
+    /// </summary>
     public partial class TVScreenForm : Form
     {
         Timer timer = new Timer { Interval = 500 };
