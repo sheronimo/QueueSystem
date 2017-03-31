@@ -209,6 +209,7 @@ namespace CustServCounter
             this.recallButton.Text = "Call Again";
             this.recallButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.recallButton.UseVisualStyleBackColor = true;
+            this.recallButton.Click += new System.EventHandler(this.RecallButtonClick);
             // 
             // currServLabel
             // 

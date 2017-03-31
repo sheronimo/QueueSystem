@@ -72,8 +72,7 @@ namespace CustServCounter
                 }//end countCommand
             }// end connection
 		}// end TimerTick
-		
-		
+
 		/// <summary>
 		/// Detects the "CS Select..." submenu item that has been clicked.
 		/// </summary>
@@ -147,11 +146,7 @@ namespace CustServCounter
                             deleteCommand.ExecuteNonQuery();
                         }
 
-                        string substr = csIDTextBox.Text.Substring(1);
-
-                        SpeechSynthesizer speaker = new SpeechSynthesizer();
-                        speaker.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Adult);
-                        speaker.SpeakAsync("Queue number " + currServTextBox.Text + ", please make your way to counter number " + substr);
+                        PlayQueueTTS();
                     }
                     else
                     {
@@ -165,8 +160,23 @@ namespace CustServCounter
                         insertCommand.Parameters.Add(new SqlParameter("CSNum", Convert.ToInt32(csIDTextBox.Text.Substring(1))));
                         insertCommand.ExecuteNonQuery();
                     }// end insertCommand
-                }// end selectCommand                
+                }// end selectCommand             
             }// end connection   
 		}// end CallButtonClick
-	}
+
+        void PlayQueueTTS()
+        {
+            string substr = csIDTextBox.Text.Substring(1);
+
+            SpeechSynthesizer speaker = new SpeechSynthesizer();
+            speaker.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Adult);
+            speaker.Rate = -1;
+            speaker.SpeakAsync("Queue number " + currServTextBox.Text + ", please make your way to counter number " + substr);
+        }
+
+        private void RecallButtonClick(object sender, EventArgs e)
+        {
+            PlayQueueTTS();
+        }
+    }
 }
