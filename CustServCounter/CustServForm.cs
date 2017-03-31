@@ -26,6 +26,9 @@ namespace CustServCounter
 		Timer timer = new Timer { Interval = 500 };
         string connectionString = "Data Source=WALUIGI-PC\\SQLEXPRESS;Initial Catalog=SHERBASE;Integrated Security=True";
 
+        /// <summary>
+        /// Default constructor for the form class.
+        /// </summary>
         public CustServForm()
 		{
 			// The InitializeComponent() call is required for Windows Forms designer support.
