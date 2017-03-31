@@ -18,12 +18,6 @@ namespace CustServCounter
 		private System.ComponentModel.IContainer components = null;
 		private System.Windows.Forms.MenuStrip menuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem fileMenuButton;
-		private System.Windows.Forms.ToolStripMenuItem csSelector;
-		private System.Windows.Forms.ToolStripMenuItem cs01Option;
-		private System.Windows.Forms.ToolStripMenuItem cs02Option;
-		private System.Windows.Forms.ToolStripMenuItem cs03Option;
-		private System.Windows.Forms.ToolStripMenuItem cs04Option;
-		private System.Windows.Forms.ToolStripMenuItem cs05Option;
 		private System.Windows.Forms.ToolStripMenuItem exitMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem helpMenuButton;
 		private System.Windows.Forms.ToolStripMenuItem aboutMenuItem;
@@ -59,13 +53,13 @@ namespace CustServCounter
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustServForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileMenuButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.csSelector = new System.Windows.Forms.ToolStripMenuItem();
             this.cs01Option = new System.Windows.Forms.ToolStripMenuItem();
             this.cs02Option = new System.Windows.Forms.ToolStripMenuItem();
             this.cs03Option = new System.Windows.Forms.ToolStripMenuItem();
             this.cs04Option = new System.Windows.Forms.ToolStripMenuItem();
             this.cs05Option = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpMenuButton = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.csIDLabel = new System.Windows.Forms.Label();
@@ -83,6 +77,7 @@ namespace CustServCounter
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileMenuButton,
+            this.csSelector,
             this.helpMenuButton});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -93,11 +88,17 @@ namespace CustServCounter
             // fileMenuButton
             // 
             this.fileMenuButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.csSelector,
             this.exitMenuItem});
             this.fileMenuButton.Name = "fileMenuButton";
             this.fileMenuButton.Size = new System.Drawing.Size(37, 20);
             this.fileMenuButton.Text = "File";
+            // 
+            // exitMenuItem
+            // 
+            this.exitMenuItem.Name = "exitMenuItem";
+            this.exitMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitMenuItem.Text = "Exit";
+            this.exitMenuItem.Click += new System.EventHandler(this.ExitMenuItemClick);
             // 
             // csSelector
             // 
@@ -108,8 +109,8 @@ namespace CustServCounter
             this.cs04Option,
             this.cs05Option});
             this.csSelector.Name = "csSelector";
-            this.csSelector.Size = new System.Drawing.Size(122, 22);
-            this.csSelector.Text = "CS Select";
+            this.csSelector.Size = new System.Drawing.Size(76, 20);
+            this.csSelector.Text = "CS Select...";
             // 
             // cs01Option
             // 
@@ -145,13 +146,6 @@ namespace CustServCounter
             this.cs05Option.Size = new System.Drawing.Size(105, 22);
             this.cs05Option.Text = "CS-05";
             this.cs05Option.Click += new System.EventHandler(this.CSIDOptionClick);
-            // 
-            // exitMenuItem
-            // 
-            this.exitMenuItem.Name = "exitMenuItem";
-            this.exitMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.exitMenuItem.Text = "Exit";
-            this.exitMenuItem.Click += new System.EventHandler(this.ExitMenuItemClick);
             // 
             // helpMenuButton
             // 
@@ -189,6 +183,7 @@ namespace CustServCounter
             // 
             // callButton
             // 
+            this.callButton.Enabled = false;
             this.callButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.callButton.Image = ((System.Drawing.Image)(resources.GetObject("callButton.Image")));
             this.callButton.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -203,6 +198,7 @@ namespace CustServCounter
             // 
             // recallButton
             // 
+            this.recallButton.Enabled = false;
             this.recallButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.recallButton.Image = ((System.Drawing.Image)(resources.GetObject("recallButton.Image")));
             this.recallButton.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -275,5 +271,12 @@ namespace CustServCounter
             this.PerformLayout();
 
 		}
-	}
+
+        private System.Windows.Forms.ToolStripMenuItem csSelector;
+        private System.Windows.Forms.ToolStripMenuItem cs01Option;
+        private System.Windows.Forms.ToolStripMenuItem cs02Option;
+        private System.Windows.Forms.ToolStripMenuItem cs03Option;
+        private System.Windows.Forms.ToolStripMenuItem cs04Option;
+        private System.Windows.Forms.ToolStripMenuItem cs05Option;
+    }
 }

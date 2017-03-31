@@ -1,11 +1,12 @@
-﻿using System;
+﻿/*
+ * Author: sd
+ * Date: 30/3/2017
+ * Time: 9:28 AM
+ * Version: 2.0
+ */
+
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
@@ -21,12 +22,12 @@ namespace TVScreenDisplay
             InitializeComponent();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void DateTimeTick(object sender, EventArgs e)
         {
             this.dateTimeLabel.Text = DateTime.Now.ToString();
         }
 
-        private void TVScreenForm_Load(object sender, EventArgs e)
+        private void TVScreenFormLoad(object sender, EventArgs e)
         {
             timer.Tick += new EventHandler(TimerTick);
             timer.Start();
@@ -54,9 +55,9 @@ namespace TVScreenDisplay
                         cs03TextBox.Text = numList[2];
                         cs04TextBox.Text = numList[3];
                         cs05TextBox.Text = numList[4];
-                    }
-                }
-            }
-        }
+                    }// end reader
+                }// end command
+            }// end connect
+        }// end TimerTick
     }
 }

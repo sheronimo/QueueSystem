@@ -45,7 +45,7 @@
             this.arrowLabel4 = new System.Windows.Forms.Label();
             this.arrowLabel5 = new System.Windows.Forms.Label();
             this.dateTimeLabel = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.dateTime = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // cs01Label
@@ -211,11 +211,11 @@
             this.dateTimeLabel.Size = new System.Drawing.Size(0, 13);
             this.dateTimeLabel.TabIndex = 15;
             // 
-            // timer1
+            // dateTime
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.dateTime.Enabled = true;
+            this.dateTime.Interval = 1000;
+            this.dateTime.Tick += new System.EventHandler(this.DateTimeTick);
             // 
             // TVScreenForm
             // 
@@ -240,7 +240,7 @@
             this.Controls.Add(this.cs01Label);
             this.Name = "TVScreenForm";
             this.Text = "Qbe - TV Screen Display";
-            this.Load += new System.EventHandler(this.TVScreenForm_Load);
+            this.Load += new System.EventHandler(this.TVScreenFormLoad);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -259,7 +259,7 @@
         private System.Windows.Forms.Label arrowLabel4;
         private System.Windows.Forms.Label arrowLabel5;
         private System.Windows.Forms.Label dateTimeLabel;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer dateTime;
         public System.Windows.Forms.TextBox cs01TextBox;
         public System.Windows.Forms.TextBox cs04TextBox;
         public System.Windows.Forms.TextBox cs02TextBox;

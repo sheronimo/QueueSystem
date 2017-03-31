@@ -20,7 +20,6 @@ namespace CustServCounter
 	{
 		Timer timer = new Timer {Interval = 500};
 
-		
 		public CustServForm()
 		{
 			// The InitializeComponent() call is required for Windows Forms designer support.
@@ -37,6 +36,7 @@ namespace CustServCounter
 		{
 			timer.Tick += new EventHandler(TimerTick);
 			timer.Start();
+            MessageBox.Show("Please select your CS counter before starting the queue.");
 		}
 		
 		/// <summary>
@@ -80,6 +80,8 @@ namespace CustServCounter
 		/// <param name="e">Parameter that contains event data.</param>
 		private void CSIDOptionClick(object sender, EventArgs e)
 		{
+            callButton.Enabled = true;
+            recallButton.Enabled = true;
 			ToolStripMenuItem selectedMenuItem = sender as ToolStripMenuItem;
 			CheckMenuItem(csSelector, selectedMenuItem);
 			
