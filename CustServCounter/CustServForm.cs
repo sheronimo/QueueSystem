@@ -9,6 +9,7 @@
 using System;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Speech.Synthesis;
 
 namespace CustServCounter
 {
@@ -145,6 +146,12 @@ namespace CustServCounter
                         {
                             deleteCommand.ExecuteNonQuery();
                         }
+
+                        string substr = csIDTextBox.Text.Substring(1);
+
+                        SpeechSynthesizer speaker = new SpeechSynthesizer();
+                        speaker.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Adult);
+                        speaker.SpeakAsync("Queue number " + currServTextBox.Text + ", please make your way to counter number " + substr);
                     }
                     else
                     {

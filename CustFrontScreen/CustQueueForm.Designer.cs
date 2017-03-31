@@ -107,7 +107,7 @@ namespace CustReceptionArea
             this.totalQueueTextBox.TabIndex = 5;
             this.totalQueueTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // MainForm
+            // CustQueueForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -119,7 +119,7 @@ namespace CustReceptionArea
             this.Controls.Add(this.queueNumTextBox);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.takeNumButton);
-            this.Name = "MainForm";
+            this.Name = "CustQueueForm";
             this.Text = "Qbe - Reception Area";
             this.Load += new System.EventHandler(this.CustQueueFormLoad);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CustQueueFormKeyDown);

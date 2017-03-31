@@ -9,6 +9,7 @@
 using System;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Drawing.Printing;
 
 namespace CustReceptionArea
 {
@@ -51,13 +52,34 @@ namespace CustReceptionArea
                 }
             }
 
+            //PrintQueueNumber();
+
             // increments for next customer
             queueCounter++;
+
 
             if (queueCounter > 1)
             {
                 queueNumTextBox.Text = queueCounter.ToString();
             }       
+        }
+
+        private void PrintQueueNumber()
+        {
+            PrintDocument printDoc = new PrintDocument();
+            printDoc.DocumentName = "Queue Number";
+            printDoc.PrinterSettings.PrinterName = "Microsoft XPS Document Writer";
+            printDoc.PrintPage += PrintDocPage;
+
+            printDoc.Print();
+        }
+
+        void PrintDocPage(object sender, PrintPageEventArgs e)
+        {
+            using (System.Drawing.Font custFont = new System.Drawing.Font("Microsoft Sans Serif", 60.0f, System.Drawing.FontStyle.Bold))
+            {
+                e.Graphics.DrawString(queueNumTextBox.Text, custFont, System.Drawing.Brushes.Black, 250, 150);
+            }
         }
 
         /// <summary>
