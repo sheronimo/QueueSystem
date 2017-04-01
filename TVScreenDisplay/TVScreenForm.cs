@@ -1,9 +1,8 @@
 ﻿/*
  * Author: sd
- * Date: 30/3/2017
- * Time: 9:28 AM
- * Version: 2.0
- * Brief: Class for displaying queue status on TV screen.
+ * Project Name: TV Screen Display
+ * Creation Date: 30/03/2017
+ * Creation Time: 7:53 AM
  */
 
 using System;
@@ -14,8 +13,8 @@ using System.Data.SqlClient;
 namespace TVScreenDisplay
 {
     /// <summary>
-    /// This form merely displays the CS counter #s and the queue number
-    /// of the customer that they are currently serving (or waiting to serve).
+    /// The TV Screen Form class displays the CS counter IDs and
+    /// the queue numbers of customers they are currently serving.
     /// There is no user interactivity.
     /// </summary>
     public partial class TVScreenForm : Form
@@ -50,8 +49,8 @@ namespace TVScreenDisplay
         }
 
         /// <summary>
-        /// Gets the currently being served queue numbers for all CS counters
-        /// and then updates them in the corresponding textboxes.
+        /// Gets currently serving queue numbers for all CS counters
+        /// and updates them in the corresponding textboxes.
         /// </summary>
         void TimerTick(object sender, EventArgs e)
         {

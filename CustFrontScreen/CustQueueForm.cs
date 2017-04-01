@@ -1,9 +1,8 @@
 ﻿/*
  * Author: sd
- * Date: 29/3/2017
- * Version: 3.0
- * Time: 9:23 AM
- * Brief: Class for customer queueing.
+ * Name: Customer Queue Form
+ * Creation Date: 27/3/2017
+ * Creation Time: 8:10 AM (GMT+7)
  */
 
 using System;
@@ -14,11 +13,8 @@ using System.Drawing.Printing;
 namespace CustReceptionArea
 {
 	/// <summary>
-	/// This form will be displayed on the PC monitor in the reception area.
-    /// Its purpose is for customers to take a queue number and wait
-    /// to be served by one of the Customer Service counters.
-    /// They can also view the total number of people waiting at that given
-    /// time, and then decide if they would like to join the queue.
+	/// The Customer Queue Form class is for customers to take a queue number
+    /// and view the total number of people waiting in the queue.
 	/// </summary>
 	public partial class CustQueueForm : Form
 	{
@@ -57,7 +53,6 @@ namespace CustReceptionArea
             // increments for next customer
             queueCounter++;
 
-
             if (queueCounter > 1)
             {
                 queueNumTextBox.Text = queueCounter.ToString();
@@ -77,13 +72,13 @@ namespace CustReceptionArea
         void PrintDocPage(object sender, PrintPageEventArgs e)
         {
             using (System.Drawing.Font custFont = new System.Drawing.Font("Microsoft Sans Serif", 60.0f, System.Drawing.FontStyle.Bold))
-            {
+            {   
                 e.Graphics.DrawString(queueNumTextBox.Text, custFont, System.Drawing.Brushes.Black, 250, 150);
             }
         }
 
         /// <summary>
-        /// Calls and displays password verification form when Exit button is clicked.
+        /// Displays Password Verification Form when Exit button is clicked.
         /// </summary>
         private void ExitButtonClick(object sender, EventArgs e)
         {
@@ -102,7 +97,7 @@ namespace CustReceptionArea
         }
 
         /// <summary>
-        /// Updates (per tick) display of total number of people waiting to be served.
+        /// Updates total number of people waiting to be served.
         /// </summary>
         void TimerTick(object sender, EventArgs e)
         {

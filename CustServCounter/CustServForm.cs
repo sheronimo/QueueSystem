@@ -1,9 +1,8 @@
 ﻿/*
  * Author: sd
- * Date: 23/3/2017
- * Version: 2.5
- * Time: 9:07 AM
- * Brief: Class for CS to serve customers waiting in queue.
+ * Name: Customer Service Form
+ * Creation Date: 27/03/2017
+ * Creation Time: 8:10 AM (GMT+7)
  */
 
 using System;
@@ -14,13 +13,8 @@ using System.Speech.Synthesis;
 namespace CustServCounter
 {
 	/// <summary>
-	/// This form will be used by the Customer Service employees at their
-    /// respective counters in order to serve the customers waiting in queue.
-    /// Customer Service employees are able to call and re-call customers, as
-    /// well as view the queue number they are currently serving (or will serve)
-    /// and the total number of people waiting to be served.
-    /// There is also functionality to select the CS Counter # instead of
-    /// hardcoding the numbers and creating 5 identical applications.
+    /// The Customer Service Form class is used by the Customer Service counters
+    /// to serve customers waiting in queue.
 	/// </summary>
 	public partial class CustServForm : Form
 	{
@@ -38,14 +32,11 @@ namespace CustServCounter
 		
 		/// <summary>
         /// Initialises and starts timer upon form load.
-        /// Displays dialog warning, as selecting CS counter #
-        /// will enable call and re-call buttons (disabled by default).
 		/// </summary>
 		void CustServFormLoad(object sender, EventArgs e)
 		{
 			timer.Tick += new EventHandler(TimerTick);
 			timer.Start();
-            MessageBox.Show("Please select your CS counter # before starting the queue.");
 		}
 		
 		/// <summary>
@@ -57,7 +48,7 @@ namespace CustServCounter
 		}
 
         /// <summary>
-        /// Updates (per tick) display of total number of people waiting to be served.
+        /// Updates display of total number of people waiting to be served.
         /// </summary>
         void TimerTick(object sender, EventArgs e)
 		{	
@@ -85,7 +76,7 @@ namespace CustServCounter
 			ToolStripMenuItem selectedMenuItem = sender as ToolStripMenuItem;
 			CheckMenuItem(csSelector, selectedMenuItem);
 			
-            // matches text in top right of form to the CS # that has been selected
+ 
 			if(selectedMenuItem.Text != null)
 			{
 				csIDTextBox.Text = selectedMenuItem.Text.Substring(3);
@@ -95,8 +86,8 @@ namespace CustServCounter
 		/// <summary>
 		/// Unchecks all items in submenu except for the clicked item.
 		/// </summary>
-		/// <param name="parentMenuItem">The parent menu which points to
-		/// the submenu containing the list of options.</param>
+		/// <param name="parentMenuItem">Parent menu which points to
+		/// submenu containing the list of options.</param>
 		/// <param name="checkedMenuItem">The submenu item which has been clicked and checked.</param>
 		private void CheckMenuItem(ToolStripMenuItem parentMenuItem, ToolStripMenuItem checkedMenuItem)
 		{
@@ -122,10 +113,7 @@ namespace CustServCounter
 		}
 		
 		/// <summary>
-		/// Gets the next queue number from the top row of the QUEUE database table.
-        /// Also clears that number from the top of the table to prevent clash.
-        /// Writes user-selected CS # and queue number being served to the CURRENTQUEUE
-        /// table, for usage by the TVScreenDisplay application.
+        /// Gets queue number of next customer to be served.
 		/// </summary>
 		void CallButtonClick(object sender, EventArgs e)
 		{
@@ -133,6 +121,7 @@ namespace CustServCounter
             {
                 connection.Open();
 
+                // next queue number is the topmost value in QUEUE table
                 using (SqlCommand selectCommand = new SqlCommand("SELECT TOP(1) QueueNum FROM QUEUE", connection))
                 {
                     int currServ = Convert.ToInt32(selectCommand.ExecuteScalar());
@@ -141,11 +130,13 @@ namespace CustServCounter
                     {
                         currServTextBox.Text = currServ.ToString();
 
+                        // erase from table to prevent clash with other CS counters
                         using (SqlCommand deleteCommand = new SqlCommand("DELETE TOP(1) FROM QUEUE", connection))
                         {
                             deleteCommand.ExecuteNonQuery();
                         }
 
+                        // plays queue number call audio
                         PlayQueueTTS();
                     }
                     else
@@ -159,11 +150,14 @@ namespace CustServCounter
                         insertCommand.Parameters.Add(new SqlParameter("QueueNumber", currServ));
                         insertCommand.Parameters.Add(new SqlParameter("CSNum", Convert.ToInt32(csIDTextBox.Text.Substring(1))));
                         insertCommand.ExecuteNonQuery();
-                    }// end insertCommand
+                    }
                 }// end selectCommand             
             }// end connection   
 		}// end CallButtonClick
 
+        /// <summary>
+        /// Calls out queue number through text-to-speech conversion.
+        /// </summary>
         void PlayQueueTTS()
         {
             string substr = csIDTextBox.Text.Substring(1);
@@ -174,6 +168,9 @@ namespace CustServCounter
             speaker.SpeakAsync("Queue number " + currServTextBox.Text + ", please make your way to counter number " + substr);
         }
 
+        /// <summary>
+        /// Replays queue number call audio
+        /// </summary>
         private void RecallButtonClick(object sender, EventArgs e)
         {
             PlayQueueTTS();

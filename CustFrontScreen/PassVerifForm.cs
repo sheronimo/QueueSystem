@@ -1,9 +1,8 @@
 ﻿/*
  * Author: sd
- * Date: 29/3/2017
- * Time: 12:48 PM
- * Version: 3.0
- * Brief: Class for password verification to exit Front Screen application. 
+ * Name: Password Verification Form
+ * Creation Date: 29/03/2017
+ * Creation Time: 9:51 AM (GMT+7)
  */
 
 using System;
@@ -12,10 +11,8 @@ using System.Windows.Forms;
 namespace CustReceptionArea
 {
     /// <summary>
-    /// This form is to verify that the correct password has been entered
-    /// in order to exit the main CustQueueForm application.
-    /// This is to prevent unauthorised individuals (i.e.
-    /// non-staff members) from exiting the program.
+    /// The Password Verification Form class prevents unauthorised individuals
+    /// from exiting the main application.
     /// </summary>
     public partial class PassVerifForm : Form
     {
@@ -28,7 +25,7 @@ namespace CustReceptionArea
         }
 
         /// <summary>
-        /// Validates password entered to exit the application.
+        /// Validates password input.
         /// </summary>
         private void PassVerifButtonClick(object sender, EventArgs e)
         {
@@ -44,7 +41,7 @@ namespace CustReceptionArea
         }
 
         /// <summary>
-        /// Prevents application from exiting if Alt-F4 is pressed.
+        /// Prevents form from closing if Alt-F4 is pressed.
         /// </summary>
         private void PassVerifFormKeyDown(object sender, KeyEventArgs e)
         {
