@@ -90,14 +90,14 @@ namespace CustServCounter
             // csSelectMenuItem
             // 
             this.csSelectMenuItem.Name = "csSelectMenuItem";
-            this.csSelectMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.csSelectMenuItem.Size = new System.Drawing.Size(128, 22);
             this.csSelectMenuItem.Text = "CS Select..";
             this.csSelectMenuItem.Click += new System.EventHandler(this.CSSelectMenuItemClick);
             // 
             // exitMenuItem
             // 
             this.exitMenuItem.Name = "exitMenuItem";
-            this.exitMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitMenuItem.Size = new System.Drawing.Size(128, 22);
             this.exitMenuItem.Text = "Exit";
             this.exitMenuItem.Click += new System.EventHandler(this.ExitMenuItemClick);
             // 

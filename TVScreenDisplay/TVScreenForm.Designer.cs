@@ -51,6 +51,7 @@
             // 
             // cs01Label
             // 
+            this.cs01Label.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cs01Label.AutoSize = true;
             this.cs01Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cs01Label.Location = new System.Drawing.Point(157, 35);
@@ -61,6 +62,7 @@
             // 
             // cs02Label
             // 
+            this.cs02Label.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cs02Label.AutoSize = true;
             this.cs02Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cs02Label.Location = new System.Drawing.Point(157, 114);
@@ -71,6 +73,7 @@
             // 
             // cs03Label
             // 
+            this.cs03Label.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cs03Label.AutoSize = true;
             this.cs03Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cs03Label.Location = new System.Drawing.Point(157, 193);
@@ -81,6 +84,7 @@
             // 
             // cs04Label
             // 
+            this.cs04Label.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cs04Label.AutoSize = true;
             this.cs04Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cs04Label.Location = new System.Drawing.Point(157, 268);
@@ -91,6 +95,7 @@
             // 
             // cs05Label
             // 
+            this.cs05Label.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cs05Label.AutoSize = true;
             this.cs05Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cs05Label.Location = new System.Drawing.Point(157, 347);
@@ -101,6 +106,7 @@
             // 
             // cs01TextBox
             // 
+            this.cs01TextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cs01TextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cs01TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cs01TextBox.Location = new System.Drawing.Point(429, 32);
@@ -112,6 +118,7 @@
             // 
             // cs04TextBox
             // 
+            this.cs04TextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cs04TextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cs04TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cs04TextBox.Location = new System.Drawing.Point(429, 264);
@@ -123,6 +130,7 @@
             // 
             // cs02TextBox
             // 
+            this.cs02TextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cs02TextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cs02TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cs02TextBox.Location = new System.Drawing.Point(429, 110);
@@ -134,6 +142,7 @@
             // 
             // cs03TextBox
             // 
+            this.cs03TextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cs03TextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cs03TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cs03TextBox.Location = new System.Drawing.Point(429, 189);
@@ -145,6 +154,7 @@
             // 
             // cs05TextBox
             // 
+            this.cs05TextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cs05TextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cs05TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cs05TextBox.Location = new System.Drawing.Point(429, 343);
@@ -156,6 +166,7 @@
             // 
             // arrowLabel1
             // 
+            this.arrowLabel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.arrowLabel1.AutoSize = true;
             this.arrowLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.arrowLabel1.Location = new System.Drawing.Point(317, 35);
@@ -166,6 +177,7 @@
             // 
             // arrowLabel2
             // 
+            this.arrowLabel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.arrowLabel2.AutoSize = true;
             this.arrowLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.arrowLabel2.Location = new System.Drawing.Point(317, 114);
@@ -176,6 +188,7 @@
             // 
             // arrowLabel3
             // 
+            this.arrowLabel3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.arrowLabel3.AutoSize = true;
             this.arrowLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.arrowLabel3.Location = new System.Drawing.Point(317, 193);
@@ -186,6 +199,7 @@
             // 
             // arrowLabel4
             // 
+            this.arrowLabel4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.arrowLabel4.AutoSize = true;
             this.arrowLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.arrowLabel4.Location = new System.Drawing.Point(317, 268);
@@ -196,6 +210,7 @@
             // 
             // arrowLabel5
             // 
+            this.arrowLabel5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.arrowLabel5.AutoSize = true;
             this.arrowLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.arrowLabel5.Location = new System.Drawing.Point(317, 347);
@@ -206,10 +221,12 @@
             // 
             // dateTimeLabel
             // 
+            this.dateTimeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimeLabel.AutoSize = true;
-            this.dateTimeLabel.Location = new System.Drawing.Point(570, 419);
+            this.dateTimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimeLabel.Location = new System.Drawing.Point(521, 413);
             this.dateTimeLabel.Name = "dateTimeLabel";
-            this.dateTimeLabel.Size = new System.Drawing.Size(0, 13);
+            this.dateTimeLabel.Size = new System.Drawing.Size(0, 25);
             this.dateTimeLabel.TabIndex = 15;
             // 
             // dateTime
