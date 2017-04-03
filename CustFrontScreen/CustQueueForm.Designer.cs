@@ -37,6 +37,7 @@ namespace CustReceptionArea
 		/// </summary>
 		private void InitializeComponent()
 		{
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustQueueForm));
             this.takeNumButton = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
             this.queueNumTextBox = new System.Windows.Forms.TextBox();
@@ -119,6 +120,7 @@ namespace CustReceptionArea
             this.Controls.Add(this.queueNumTextBox);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.takeNumButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CustQueueForm";
             this.Text = "Qbe - Reception Area";
             this.Load += new System.EventHandler(this.CustQueueFormLoad);

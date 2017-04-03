@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TVScreenForm));
             this.cs01Label = new System.Windows.Forms.Label();
             this.cs02Label = new System.Windows.Forms.Label();
             this.cs03Label = new System.Windows.Forms.Label();
@@ -238,6 +239,7 @@
             this.Controls.Add(this.cs03Label);
             this.Controls.Add(this.cs02Label);
             this.Controls.Add(this.cs01Label);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TVScreenForm";
             this.Text = "Qbe - TV Screen Display";
             this.Load += new System.EventHandler(this.TVScreenFormLoad);

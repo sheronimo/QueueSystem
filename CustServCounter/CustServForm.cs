@@ -32,12 +32,28 @@ namespace CustServCounter
 		
 		/// <summary>
         /// Initialises and starts timer upon form load.
+        /// Also displays CS counter ID selection form.
 		/// </summary>
 		void CustServFormLoad(object sender, EventArgs e)
 		{
 			timer.Tick += new EventHandler(TimerTick);
 			timer.Start();
+            ShowSelectorForm();
 		}
+
+        /// <summary>
+        /// Displays CS counter ID selection form as a dialog
+        /// and handles data passed from the form.
+        /// </summary>
+        void ShowSelectorForm()
+        {
+            CSSelectForm csSelForm = new CSSelectForm();
+            DialogResult result = csSelForm.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                csIDTextBox.Text = csSelForm.CSIDText;
+            }
+        }
 		
 		/// <summary>
         /// Fully closes program when tool strip button is clicked.
@@ -64,25 +80,12 @@ namespace CustServCounter
             }// end connection
 		}// end TimerTick
 
-		/// <summary>
-		/// Detects the "CS Select..." submenu item that has been clicked.
-		/// </summary>
-		private void CSIDOptionClick(object sender, EventArgs e)
-		{
-            // enables buttons so CS can start serving customers
-            callButton.Enabled = true;
-            recallButton.Enabled = true;
 
-			ToolStripMenuItem selectedMenuItem = sender as ToolStripMenuItem;
-			CheckMenuItem(csSelector, selectedMenuItem);
-			
- 
-			if(selectedMenuItem.Text != null)
-			{
-				csIDTextBox.Text = selectedMenuItem.Text.Substring(3);
-			}
-		}
-		
+        /*
+         * 3/4/17: Commented out because of change to the CS counter ID selection method.
+         * Keeping code here because it might be useful for future add-on,
+         * i.e. switching interface language.
+         * 
 		/// <summary>
 		/// Unchecks all items in submenu except for the clicked item.
 		/// </summary>
@@ -100,6 +103,7 @@ namespace CustServCounter
 				}// end if
 			}// end foreach
 		}// end CheckMenuItem
+        */
 		
 		/// <summary>
 		/// Prevents form from closing by accident.
@@ -174,6 +178,15 @@ namespace CustServCounter
         private void RecallButtonClick(object sender, EventArgs e)
         {
             PlayQueueTTS();
+        }
+
+        /// <summary>
+        /// Allows user to change the CS counter ID instead 
+        /// of closing and reopening the application.
+        /// </summary>
+        private void CSSelectMenuItemClick(object sender, EventArgs e)
+        {
+            ShowSelectorForm();
         }
     }
 }

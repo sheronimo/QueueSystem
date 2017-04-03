@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PassVerifForm));
             this.warningLabel = new System.Windows.Forms.Label();
             this.passTextBox = new System.Windows.Forms.TextBox();
             this.passVerifButton = new System.Windows.Forms.Button();
@@ -72,6 +73,7 @@
             this.Controls.Add(this.passVerifButton);
             this.Controls.Add(this.passTextBox);
             this.Controls.Add(this.warningLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PassVerifForm";
             this.Text = "Qbe - Password Verification";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PassVerifFormKeyDown);

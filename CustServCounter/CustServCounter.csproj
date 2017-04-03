@@ -37,6 +37,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Logomakr_25crJN.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
@@ -58,6 +65,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CSSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CSSelectForm.Designer.cs">
+      <DependentUpon>CSSelectForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustServForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,9 +88,15 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CSSelectForm.resx">
+      <DependentUpon>CSSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustServForm.resx">
       <DependentUpon>CustServForm.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Logomakr_25crJN.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

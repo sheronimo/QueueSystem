@@ -19,10 +19,9 @@ namespace CustServCounter
 		private System.Windows.Forms.MenuStrip menuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem fileMenuButton;
 		private System.Windows.Forms.ToolStripMenuItem exitMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem helpMenuButton;
+		private System.Windows.Forms.ToolStripMenuItem helpMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem aboutMenuItem;
 		private System.Windows.Forms.Label csIDLabel;
-		private System.Windows.Forms.TextBox csIDTextBox;
 		private System.Windows.Forms.Button callButton;
 		private System.Windows.Forms.Button recallButton;
 		private System.Windows.Forms.Label currServLabel;
@@ -53,14 +52,9 @@ namespace CustServCounter
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustServForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileMenuButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.csSelectMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.csSelector = new System.Windows.Forms.ToolStripMenuItem();
-            this.cs01Option = new System.Windows.Forms.ToolStripMenuItem();
-            this.cs02Option = new System.Windows.Forms.ToolStripMenuItem();
-            this.cs03Option = new System.Windows.Forms.ToolStripMenuItem();
-            this.cs04Option = new System.Windows.Forms.ToolStripMenuItem();
-            this.cs05Option = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpMenuButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.csIDLabel = new System.Windows.Forms.Label();
             this.csIDTextBox = new System.Windows.Forms.TextBox();
@@ -77,8 +71,7 @@ namespace CustServCounter
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileMenuButton,
-            this.csSelector,
-            this.helpMenuButton});
+            this.helpMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(764, 24);
@@ -88,72 +81,33 @@ namespace CustServCounter
             // fileMenuButton
             // 
             this.fileMenuButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.csSelectMenuItem,
             this.exitMenuItem});
             this.fileMenuButton.Name = "fileMenuButton";
             this.fileMenuButton.Size = new System.Drawing.Size(37, 20);
             this.fileMenuButton.Text = "File";
             // 
+            // csSelectMenuItem
+            // 
+            this.csSelectMenuItem.Name = "csSelectMenuItem";
+            this.csSelectMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.csSelectMenuItem.Text = "CS Select..";
+            this.csSelectMenuItem.Click += new System.EventHandler(this.CSSelectMenuItemClick);
+            // 
             // exitMenuItem
             // 
             this.exitMenuItem.Name = "exitMenuItem";
-            this.exitMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitMenuItem.Text = "Exit";
             this.exitMenuItem.Click += new System.EventHandler(this.ExitMenuItemClick);
             // 
-            // csSelector
+            // helpMenuItem
             // 
-            this.csSelector.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cs01Option,
-            this.cs02Option,
-            this.cs03Option,
-            this.cs04Option,
-            this.cs05Option});
-            this.csSelector.Name = "csSelector";
-            this.csSelector.Size = new System.Drawing.Size(76, 20);
-            this.csSelector.Text = "CS Select...";
-            // 
-            // cs01Option
-            // 
-            this.cs01Option.Name = "cs01Option";
-            this.cs01Option.Size = new System.Drawing.Size(105, 22);
-            this.cs01Option.Text = "CS-01";
-            this.cs01Option.Click += new System.EventHandler(this.CSIDOptionClick);
-            // 
-            // cs02Option
-            // 
-            this.cs02Option.Name = "cs02Option";
-            this.cs02Option.Size = new System.Drawing.Size(105, 22);
-            this.cs02Option.Text = "CS-02";
-            this.cs02Option.Click += new System.EventHandler(this.CSIDOptionClick);
-            // 
-            // cs03Option
-            // 
-            this.cs03Option.Name = "cs03Option";
-            this.cs03Option.Size = new System.Drawing.Size(105, 22);
-            this.cs03Option.Text = "CS-03";
-            this.cs03Option.Click += new System.EventHandler(this.CSIDOptionClick);
-            // 
-            // cs04Option
-            // 
-            this.cs04Option.Name = "cs04Option";
-            this.cs04Option.Size = new System.Drawing.Size(105, 22);
-            this.cs04Option.Text = "CS-04";
-            this.cs04Option.Click += new System.EventHandler(this.CSIDOptionClick);
-            // 
-            // cs05Option
-            // 
-            this.cs05Option.Name = "cs05Option";
-            this.cs05Option.Size = new System.Drawing.Size(105, 22);
-            this.cs05Option.Text = "CS-05";
-            this.cs05Option.Click += new System.EventHandler(this.CSIDOptionClick);
-            // 
-            // helpMenuButton
-            // 
-            this.helpMenuButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.helpMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutMenuItem});
-            this.helpMenuButton.Name = "helpMenuButton";
-            this.helpMenuButton.Size = new System.Drawing.Size(44, 20);
-            this.helpMenuButton.Text = "Help";
+            this.helpMenuItem.Name = "helpMenuItem";
+            this.helpMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpMenuItem.Text = "Help";
             // 
             // aboutMenuItem
             // 
@@ -183,7 +137,6 @@ namespace CustServCounter
             // 
             // callButton
             // 
-            this.callButton.Enabled = false;
             this.callButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.callButton.Image = ((System.Drawing.Image)(resources.GetObject("callButton.Image")));
             this.callButton.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -198,7 +151,6 @@ namespace CustServCounter
             // 
             // recallButton
             // 
-            this.recallButton.Enabled = false;
             this.recallButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.recallButton.Image = ((System.Drawing.Image)(resources.GetObject("recallButton.Image")));
             this.recallButton.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -261,6 +213,7 @@ namespace CustServCounter
             this.Controls.Add(this.csIDTextBox);
             this.Controls.Add(this.csIDLabel);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "CustServForm";
             this.Text = "Qbe - CS Counter";
@@ -272,12 +225,7 @@ namespace CustServCounter
             this.PerformLayout();
 
 		}
-
-        private System.Windows.Forms.ToolStripMenuItem csSelector;
-        private System.Windows.Forms.ToolStripMenuItem cs01Option;
-        private System.Windows.Forms.ToolStripMenuItem cs02Option;
-        private System.Windows.Forms.ToolStripMenuItem cs03Option;
-        private System.Windows.Forms.ToolStripMenuItem cs04Option;
-        private System.Windows.Forms.ToolStripMenuItem cs05Option;
+        private System.Windows.Forms.TextBox csIDTextBox;
+        private System.Windows.Forms.ToolStripMenuItem csSelectMenuItem;
     }
 }
