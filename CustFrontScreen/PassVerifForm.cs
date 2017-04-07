@@ -21,6 +21,7 @@ namespace CustReceptionArea
         /// </summary>
         public PassVerifForm()
         {
+            // The InitializeComponent() call is required for Windows Forms designer support.
             InitializeComponent();
         }
 
@@ -36,8 +37,8 @@ namespace CustReceptionArea
             else
             {
                 MessageBox.Show("Incorrect password!");
-                passTextBox.Text = "";
-            }// end if
+                passTextBox.Text.Equals("");
+            }
         }
 
         /// <summary>
@@ -48,7 +49,7 @@ namespace CustReceptionArea
             if(e.KeyCode == Keys.F4 && e.Alt)
             {
                 e.SuppressKeyPress = true;
-            }// end if
-        }// end PassVerifFormKeyDown
-    }// end partial class
+            }
+        }
+    }
 }

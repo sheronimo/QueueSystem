@@ -41,17 +41,20 @@ namespace CustReceptionArea
             this.takeNumButton = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
             this.queueNumTextBox = new System.Windows.Forms.TextBox();
-            this.arrowLabel = new System.Windows.Forms.Label();
             this.totalQueueLabel = new System.Windows.Forms.Label();
             this.totalQueueTextBox = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // takeNumButton
             // 
-            this.takeNumButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.takeNumButton.Location = new System.Drawing.Point(93, 60);
+            this.takeNumButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.takeNumButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.takeNumButton.Location = new System.Drawing.Point(99, 55);
             this.takeNumButton.Name = "takeNumButton";
-            this.takeNumButton.Size = new System.Drawing.Size(180, 180);
+            this.takeNumButton.Size = new System.Drawing.Size(250, 250);
             this.takeNumButton.TabIndex = 0;
             this.takeNumButton.Text = "Take Number";
             this.takeNumButton.UseVisualStyleBackColor = true;
@@ -59,10 +62,11 @@ namespace CustReceptionArea
             // 
             // exitButton
             // 
-            this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exitButton.Location = new System.Drawing.Point(607, 384);
+            this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exitButton.Location = new System.Drawing.Point(827, 534);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(85, 45);
+            this.exitButton.Size = new System.Drawing.Size(105, 55);
             this.exitButton.TabIndex = 1;
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = true;
@@ -70,53 +74,68 @@ namespace CustReceptionArea
             // 
             // queueNumTextBox
             // 
-            this.queueNumTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.queueNumTextBox.Location = new System.Drawing.Point(425, 124);
+            this.queueNumTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.queueNumTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.queueNumTextBox.Location = new System.Drawing.Point(603, 133);
             this.queueNumTextBox.Name = "queueNumTextBox";
             this.queueNumTextBox.ReadOnly = true;
-            this.queueNumTextBox.Size = new System.Drawing.Size(130, 53);
+            this.queueNumTextBox.Size = new System.Drawing.Size(155, 68);
             this.queueNumTextBox.TabIndex = 2;
             this.queueNumTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // arrowLabel
-            // 
-            this.arrowLabel.AutoSize = true;
-            this.arrowLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.arrowLabel.Location = new System.Drawing.Point(314, 127);
-            this.arrowLabel.Name = "arrowLabel";
-            this.arrowLabel.Size = new System.Drawing.Size(66, 46);
-            this.arrowLabel.TabIndex = 3;
-            this.arrowLabel.Text = "⟶";
-            // 
             // totalQueueLabel
             // 
+            this.totalQueueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.totalQueueLabel.AutoSize = true;
-            this.totalQueueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalQueueLabel.Location = new System.Drawing.Point(87, 302);
+            this.totalQueueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalQueueLabel.Location = new System.Drawing.Point(95, 381);
             this.totalQueueLabel.Name = "totalQueueLabel";
-            this.totalQueueLabel.Size = new System.Drawing.Size(269, 31);
+            this.totalQueueLabel.Size = new System.Drawing.Size(462, 54);
             this.totalQueueLabel.TabIndex = 4;
             this.totalQueueLabel.Text = "Current Total Queue:";
             // 
             // totalQueueTextBox
             // 
-            this.totalQueueTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalQueueTextBox.Location = new System.Drawing.Point(425, 288);
+            this.totalQueueTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.totalQueueTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalQueueTextBox.Location = new System.Drawing.Point(603, 374);
             this.totalQueueTextBox.Name = "totalQueueTextBox";
             this.totalQueueTextBox.ReadOnly = true;
-            this.totalQueueTextBox.Size = new System.Drawing.Size(130, 53);
+            this.totalQueueTextBox.Size = new System.Drawing.Size(155, 68);
             this.totalQueueTextBox.TabIndex = 5;
             this.totalQueueTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(422, 137);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 64);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(4, 579);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(261, 19);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "© Trisensa Diagnostic Centre";
             // 
             // CustQueueForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(704, 441);
+            this.ClientSize = new System.Drawing.Size(944, 601);
             this.ControlBox = false;
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.totalQueueTextBox);
             this.Controls.Add(this.totalQueueLabel);
-            this.Controls.Add(this.arrowLabel);
             this.Controls.Add(this.queueNumTextBox);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.takeNumButton);
@@ -125,6 +144,7 @@ namespace CustReceptionArea
             this.Text = "Qbe - Reception Area";
             this.Load += new System.EventHandler(this.CustQueueFormLoad);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CustQueueFormKeyDown);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -132,8 +152,9 @@ namespace CustReceptionArea
 
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.TextBox queueNumTextBox;
-        private System.Windows.Forms.Label arrowLabel;
         private System.Windows.Forms.Label totalQueueLabel;
         private System.Windows.Forms.TextBox totalQueueTextBox;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label1;
     }
 }

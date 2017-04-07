@@ -23,14 +23,26 @@ namespace CustServCounter
         /// </summary>
         public CSSelectForm()
         {
+            // The InitializeComponent() call is required for Windows Forms designer support.
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Get method to access number field of the checked CS counter ID option's text.
+        /// </summary>
+        public string CSIDText
+        {
+            get
+            {
+                return selectedButton.Text.Substring(3);
+            }
         }
 
         /// <summary>
         /// Validates whether one of the CS counter ID options
         /// has been selected.
         /// </summary>
-        private void CSAcceptButtonClick(object sender, EventArgs e)
+        private void EnterButtonClick(object sender, EventArgs e)
         {
             bool selected = false;
 
@@ -54,17 +66,6 @@ namespace CustServCounter
             else
             {
                 MessageBox.Show("Please select a CS ID counter!");
-            }
-        }
-
-        /// <summary>
-        /// Get method to access number field of the checked CS counter ID option's text.
-        /// </summary>
-        public string CSIDText
-        {
-            get
-            {
-                return selectedButton.Text.Substring(3);
             }
         }
     }

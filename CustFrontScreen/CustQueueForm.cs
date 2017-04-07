@@ -18,80 +18,25 @@ namespace CustReceptionArea
 	/// </summary>
 	public partial class CustQueueForm : Form
 	{
-        int queueCounter = 1;
-        Timer timer = new Timer { Interval = 500 };
-        string connectionString = "Data Source=WALUIGI-PC\\SQLEXPRESS;Initial Catalog=SHERBASE;Integrated Security=True";
+        int queueCount = 1;
+        Timer timer = new Timer { Interval = 100 };
+        string connectionString = "Data Source=192.168.0.32,61945;Initial Catalog=SHERBASE;Persist Security Info=True;User ID=sher;Password=sher";
 
         /// <summary>
         /// Default constructor for the form class.
         /// </summary>
         public CustQueueForm()
 		{
-			InitializeComponent();
+            // The InitializeComponent() call is required for Windows Forms designer support.
+            InitializeComponent();
 		}
-
-        /// <summary>
-        /// Adds queue number to database table "Queue" to be used by other programs.
-        /// Queue number is also displayed for customers' convenience.
-        /// </summary>
-        private void TakeNumButtonClick(object sender, EventArgs e)
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                using (SqlCommand insertCommand = new SqlCommand("INSERT INTO QUEUE VALUES(@QueueNum)", connection))
-                {
-                    // parameterised to prevent SQL injection
-                    insertCommand.Parameters.Add(new SqlParameter("QueueNum", queueCounter));
-                    insertCommand.ExecuteNonQuery();
-                }
-            }
-
-            //PrintQueueNumber();
-
-            // increments for next customer
-            queueCounter++;
-
-            if (queueCounter > 1)
-            {
-                queueNumTextBox.Text = queueCounter.ToString();
-            }       
-        }
-
-        private void PrintQueueNumber()
-        {
-            PrintDocument printDoc = new PrintDocument();
-            printDoc.DocumentName = "Queue Number";
-            printDoc.PrinterSettings.PrinterName = "Microsoft XPS Document Writer";
-            printDoc.PrintPage += PrintDocPage;
-
-            printDoc.Print();
-        }
-
-        void PrintDocPage(object sender, PrintPageEventArgs e)
-        {
-            using (System.Drawing.Font custFont = new System.Drawing.Font("Microsoft Sans Serif", 60.0f, System.Drawing.FontStyle.Bold))
-            {   
-                e.Graphics.DrawString(queueNumTextBox.Text, custFont, System.Drawing.Brushes.Black, 250, 150);
-            }
-        }
-
-        /// <summary>
-        /// Displays Password Verification Form when Exit button is clicked.
-        /// </summary>
-        private void ExitButtonClick(object sender, EventArgs e)
-        {
-            PassVerifForm passVerif = new PassVerifForm();
-            passVerif.Show();
-        }
 
         /// <summary>
         /// Initialises queue number and timer when program loads.
         /// </summary>
         private void CustQueueFormLoad(object sender, EventArgs e)
         {
-            queueNumTextBox.Text = queueCounter.ToString();
+            queueNumTextBox.Text = queueCount.ToString();
             timer.Tick += new EventHandler(TimerTick);
             timer.Start();
         }
@@ -109,10 +54,48 @@ namespace CustReceptionArea
                 {
                     int totalQueue = Convert.ToInt32(countCommand.ExecuteScalar());
                     totalQueueTextBox.Text = totalQueue.ToString();
-                }// end command
-            }// end connect
-        }// end MyTimerTick
+                }
+            }
+        }
 
+        /// <summary>
+        /// Adds queue number to database table "Queue" to be used by other programs.
+        /// Queue number is also displayed for customers' convenience.
+        /// </summary>
+        private void TakeNumButtonClick(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand insertCommand = new SqlCommand("INSERT INTO QUEUE VALUES(@QueueNum)", connection))
+                {
+                    // parameterised to prevent SQL injection
+                    insertCommand.Parameters.Add(new SqlParameter("QueueNum", queueCount));
+                    insertCommand.ExecuteNonQuery();
+                }
+            }
+
+            //PrintQueueNumber();
+
+            // increments for next customer
+            queueCount++;
+
+            if (queueCount > 1)
+            {
+                queueNumTextBox.Text = queueCount.ToString();
+            }       
+        }
+
+        /// <summary>
+        /// Displays Password Verification Form when Exit button is clicked.
+        /// </summary>
+        private void ExitButtonClick(object sender, EventArgs e)
+        {
+            PassVerifForm passVerif = new PassVerifForm();
+            passVerif.Show();
+        }
+        
         /// <summary>
         /// Prevents the application from exiting through Alt-F4.
         /// </summary>
@@ -121,7 +104,40 @@ namespace CustReceptionArea
             if(e.KeyCode == Keys.F4 && e.Alt)
             {
                 e.SuppressKeyPress = true;
-            }// end if
-        }// end CustQueueFormKeyDown
+            }
+        }
+
+        /// <summary>
+        /// Prints out the queue number ticket.
+        /// </summary>
+        private void PrintQueueNumber()
+        {
+            PrintDocument printDoc = new PrintDocument();
+            printDoc.PrinterSettings.PrinterName = "Epson TM-U220 Receipt";
+            printDoc.PrintPage += PrintDoco;
+
+            printDoc.Print();
+        }
+
+        /// <summary>
+        /// Draws the queue number graphic for printing.
+        /// </summary>
+        void PrintDoco(object sender, PrintPageEventArgs e)
+        {
+            using (System.Drawing.Font custFont1 = new System.Drawing.Font("Arial", 12.0f, System.Drawing.FontStyle.Regular))
+            { 
+                e.Graphics.DrawString("Trisensa Diagnostic Centre", custFont1, System.Drawing.Brushes.Black, 0, 0);
+            }
+       
+            using (System.Drawing.Font custFont2 = new System.Drawing.Font("Microsoft Sans Serif", 60.0f, System.Drawing.FontStyle.Bold))
+            {
+                e.Graphics.DrawString(queueNumTextBox.Text, custFont2, System.Drawing.Brushes.Black, 90, 40);
+            }
+
+            using (System.Drawing.Font custFont3 = new System.Drawing.Font("Arial", 10.0f, System.Drawing.FontStyle.Regular))
+            {
+                e.Graphics.DrawString(DateTime.Now.ToString(), custFont3, System.Drawing.Brushes.Black, 130, 150);
+            }
+        }
     }
 }

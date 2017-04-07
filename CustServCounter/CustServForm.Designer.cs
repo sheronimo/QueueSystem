@@ -90,14 +90,14 @@ namespace CustServCounter
             // csSelectMenuItem
             // 
             this.csSelectMenuItem.Name = "csSelectMenuItem";
-            this.csSelectMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.csSelectMenuItem.Size = new System.Drawing.Size(152, 22);
             this.csSelectMenuItem.Text = "CS Select..";
             this.csSelectMenuItem.Click += new System.EventHandler(this.CSSelectMenuItemClick);
             // 
             // exitMenuItem
             // 
             this.exitMenuItem.Name = "exitMenuItem";
-            this.exitMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.exitMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitMenuItem.Text = "Exit";
             this.exitMenuItem.Click += new System.EventHandler(this.ExitMenuItemClick);
             // 
@@ -117,23 +117,26 @@ namespace CustServCounter
             // 
             // csIDLabel
             // 
+            this.csIDLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.csIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.csIDLabel.Location = new System.Drawing.Point(652, 27);
+            this.csIDLabel.Location = new System.Drawing.Point(675, 27);
             this.csIDLabel.Name = "csIDLabel";
-            this.csIDLabel.Size = new System.Drawing.Size(60, 30);
+            this.csIDLabel.Size = new System.Drawing.Size(57, 30);
             this.csIDLabel.TabIndex = 1;
             this.csIDLabel.Text = "CS #";
             // 
             // csIDTextBox
             // 
+            this.csIDTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.csIDTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.csIDTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.csIDTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.csIDTextBox.Location = new System.Drawing.Point(707, 27);
+            this.csIDTextBox.Location = new System.Drawing.Point(729, 27);
             this.csIDTextBox.Name = "csIDTextBox";
             this.csIDTextBox.ReadOnly = true;
-            this.csIDTextBox.Size = new System.Drawing.Size(47, 23);
+            this.csIDTextBox.Size = new System.Drawing.Size(25, 23);
             this.csIDTextBox.TabIndex = 2;
+            this.csIDTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // callButton
             // 
@@ -204,14 +207,14 @@ namespace CustServCounter
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(764, 541);
+            this.Controls.Add(this.csIDTextBox);
+            this.Controls.Add(this.csIDLabel);
             this.Controls.Add(this.currServTextBox);
             this.Controls.Add(this.queueTotalTextBox);
             this.Controls.Add(this.queueTotalLabel);
             this.Controls.Add(this.currServLabel);
             this.Controls.Add(this.recallButton);
             this.Controls.Add(this.callButton);
-            this.Controls.Add(this.csIDTextBox);
-            this.Controls.Add(this.csIDLabel);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;

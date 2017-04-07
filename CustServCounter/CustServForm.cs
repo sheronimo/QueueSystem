@@ -8,7 +8,8 @@
 using System;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.Speech.Synthesis;
+using System.Media;
+//using System.Speech.Synthesis;
 
 namespace CustServCounter
 {
@@ -18,8 +19,8 @@ namespace CustServCounter
 	/// </summary>
 	public partial class CustServForm : Form
 	{
-		Timer timer = new Timer { Interval = 500 };
-        string connectionString = "Data Source=WALUIGI-PC\\SQLEXPRESS;Initial Catalog=SHERBASE;Integrated Security=True";
+		Timer timer = new Timer { Interval = 100 };
+        string connectionString = "Data Source=192.168.0.32,61945;Network Library = DBMSSOCN;Initial Catalog=SHERBASE;User ID=sher;Password=sher";
 
         /// <summary>
         /// Default constructor for the form class.
@@ -39,7 +40,142 @@ namespace CustServCounter
 			timer.Tick += new EventHandler(TimerTick);
 			timer.Start();
             ShowSelectorForm();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand initialiseCommand = new SqlCommand("SELECT QueueNumber FROM CURRENTQUEUE WHERE CSNum = @csnum", connection))
+                {
+                    initialiseCommand.Parameters.Add("csnum", Convert.ToInt32(csIDTextBox.Text.Substring(1)));
+                    int initialServ = Convert.ToInt32(initialiseCommand.ExecuteScalar());
+                    currServTextBox.Text = initialServ.ToString();
+                }
+            }
+
 		}
+
+        /// <summary>
+        /// Updates display of total number of people waiting to be served.
+        /// </summary>
+        void TimerTick(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand countCommand = new SqlCommand("SELECT COUNT(QueueNum) FROM QUEUE", connection))
+                {
+                    int queueTotal = Convert.ToInt32(countCommand.ExecuteScalar());
+                    queueTotalTextBox.Text = queueTotal.ToString();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Fully closes program when tool strip button is clicked.
+        /// </summary>
+        void ExitMenuItemClick(object sender, EventArgs e)
+		{
+			Application.Exit();
+		}
+		
+		/// <summary>
+		/// Prevents form from closing by accident.
+		/// </summary>
+		void CustServFormClosing(object sender, FormClosingEventArgs e)
+		{
+			if(MessageBox.Show("This will exit the program. Continue?", "Close Program", MessageBoxButtons.YesNo) != DialogResult.Yes)
+			{
+				e.Cancel = true;
+			}
+		}
+		
+		/// <summary>
+        /// Gets queue number of next customer to be served.
+		/// </summary>
+		void CallButtonClick(object sender, EventArgs e)
+		{
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                // next queue number is the topmost value in QUEUE table
+                using (SqlCommand selectCommand = new SqlCommand("SELECT TOP(1) QueueNum FROM QUEUE ORDER BY QueueNum ASC", connection))
+                {
+                    int currServ = Convert.ToInt32(selectCommand.ExecuteScalar());
+
+                    if (currServ > 0)
+                    {
+                        currServTextBox.Text = currServ.ToString();
+
+                        // erase from table to prevent clash with other CS counters
+                        using (SqlCommand deleteCommand = new SqlCommand("DELETE FROM QUEUE WHERE QueueNum IN(SELECT TOP(1) QueueNum FROM QUEUE ORDER BY QueueNum ASC)", connection))
+                        {
+                            deleteCommand.ExecuteNonQuery();
+                        }
+                    }   
+                    else
+                    {
+                        MessageBox.Show("No one waiting!");
+                    }                
+
+                    using (SqlCommand insertCommand = new SqlCommand("UPDATE CURRENTQUEUE SET QUEUENUMBER = @QueueNumber WHERE CSNum = @CSNum", connection))
+                    {
+                        // parameterised for protection against SQL injection
+                        insertCommand.Parameters.Add(new SqlParameter("QueueNumber", currServ.ToString()));
+                        insertCommand.Parameters.Add(new SqlParameter("CSNum", Convert.ToInt32(csIDTextBox.Text.Substring(1))));
+                        insertCommand.ExecuteNonQuery();
+                    }
+                }
+            }
+		}
+
+        /// <summary>
+        /// Replays queue number call audio
+        /// </summary>
+        private void RecallButtonClick(object sender, EventArgs e)
+        {
+            if (!currServTextBox.Text.Equals("0"))
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand updateCommand1 = new SqlCommand("UPDATE CURRENTQUEUE SET QUEUENUMBER = @queuenum WHERE CSNUM = @CSNum", connection))
+                    {
+                        updateCommand1.Parameters.Add(new SqlParameter("queuenum", "0" + currServTextBox.Text));
+                        updateCommand1.Parameters.Add(new SqlParameter("CSNum", Convert.ToInt32(csIDTextBox.Text.Substring(1))));
+                        updateCommand1.ExecuteNonQuery();
+                    }
+
+                    using (SqlCommand waitCommand = new SqlCommand("WAITFOR DELAY \'00:00:01\'", connection))
+                    {
+                        waitCommand.ExecuteNonQuery();
+                    }
+
+                    using (SqlCommand updateCommand2 = new SqlCommand("UPDATE CURRENTQUEUE SET QUEUENUMBER = @QueueNum WHERE CSNUM = @CSNum", connection))
+                    {
+                        updateCommand2.Parameters.Add(new SqlParameter("QueueNum", currServTextBox.Text));
+                        updateCommand2.Parameters.Add(new SqlParameter("CSNum", Convert.ToInt32(csIDTextBox.Text.Substring(1))));
+                        updateCommand2.ExecuteNonQuery();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No one to recall!");
+            }
+        }
+
+        /// <summary>
+        /// Allows user to change the CS counter ID instead 
+        /// of closing and reopening the application.
+        /// </summary>
+        private void CSSelectMenuItemClick(object sender, EventArgs e)
+        {
+            ShowSelectorForm();
+        }
 
         /// <summary>
         /// Displays CS counter ID selection form as a dialog
@@ -52,34 +188,19 @@ namespace CustServCounter
             if (result == DialogResult.OK)
             {
                 csIDTextBox.Text = csSelForm.CSIDText;
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand initialiseCommand = new SqlCommand("SELECT QueueNumber FROM CURRENTQUEUE WHERE CSNum = @csnum", connection))
+                    {
+                        initialiseCommand.Parameters.Add("csnum", Convert.ToInt32(csIDTextBox.Text.Substring(1)));
+                        int initialServ = Convert.ToInt32(initialiseCommand.ExecuteScalar());
+                        currServTextBox.Text = initialServ.ToString();
+                    }
+                }
             }
         }
-		
-		/// <summary>
-        /// Fully closes program when tool strip button is clicked.
-		/// </summary>
-		void ExitMenuItemClick(object sender, EventArgs e)
-		{
-			Application.Exit();
-		}
-
-        /// <summary>
-        /// Updates display of total number of people waiting to be served.
-        /// </summary>
-        void TimerTick(object sender, EventArgs e)
-		{	
-            using(SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                using (SqlCommand countCommand = new SqlCommand("SELECT COUNT(QueueNum) FROM QUEUE", connection))
-                {
-                    int queueTotal = Convert.ToInt32(countCommand.ExecuteScalar());
-                    queueTotalTextBox.Text = queueTotal.ToString();
-                }//end countCommand
-            }// end connection
-		}// end TimerTick
-
 
         /*
          * 3/4/17: Commented out because of change to the CS counter ID selection method.
@@ -104,61 +225,8 @@ namespace CustServCounter
 			}// end foreach
 		}// end CheckMenuItem
         */
-		
-		/// <summary>
-		/// Prevents form from closing by accident.
-		/// </summary>
-		void CustServFormClosing(object sender, FormClosingEventArgs e)
-		{
-			if(MessageBox.Show("This will exit the program. Continue?", "Close Program", MessageBoxButtons.YesNo) != DialogResult.Yes)
-			{
-				e.Cancel = true;
-			}
-		}
-		
-		/// <summary>
-        /// Gets queue number of next customer to be served.
-		/// </summary>
-		void CallButtonClick(object sender, EventArgs e)
-		{
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
 
-                // next queue number is the topmost value in QUEUE table
-                using (SqlCommand selectCommand = new SqlCommand("SELECT TOP(1) QueueNum FROM QUEUE", connection))
-                {
-                    int currServ = Convert.ToInt32(selectCommand.ExecuteScalar());
-
-                    if (currServ > 0)
-                    {
-                        currServTextBox.Text = currServ.ToString();
-
-                        // erase from table to prevent clash with other CS counters
-                        using (SqlCommand deleteCommand = new SqlCommand("DELETE TOP(1) FROM QUEUE", connection))
-                        {
-                            deleteCommand.ExecuteNonQuery();
-                        }
-
-                        // plays queue number call audio
-                        PlayQueueTTS();
-                    }
-                    else
-                    {
-                        MessageBox.Show("No one waiting!");
-                    }
-
-                    using (SqlCommand insertCommand = new SqlCommand("UPDATE CURRENTQUEUE SET QUEUENUMBER = @QueueNumber WHERE CSNum = @CSNum", connection))
-                    {
-                        // parameterised for protection against SQL injection
-                        insertCommand.Parameters.Add(new SqlParameter("QueueNumber", currServ));
-                        insertCommand.Parameters.Add(new SqlParameter("CSNum", Convert.ToInt32(csIDTextBox.Text.Substring(1))));
-                        insertCommand.ExecuteNonQuery();
-                    }
-                }// end selectCommand             
-            }// end connection   
-		}// end CallButtonClick
-
+        /*
         /// <summary>
         /// Calls out queue number through text-to-speech conversion.
         /// </summary>
@@ -171,22 +239,6 @@ namespace CustServCounter
             speaker.Rate = -1;
             speaker.SpeakAsync("Queue number " + currServTextBox.Text + ", please make your way to counter number " + substr);
         }
-
-        /// <summary>
-        /// Replays queue number call audio
-        /// </summary>
-        private void RecallButtonClick(object sender, EventArgs e)
-        {
-            PlayQueueTTS();
-        }
-
-        /// <summary>
-        /// Allows user to change the CS counter ID instead 
-        /// of closing and reopening the application.
-        /// </summary>
-        private void CSSelectMenuItemClick(object sender, EventArgs e)
-        {
-            ShowSelectorForm();
-        }
+        */
     }
 }

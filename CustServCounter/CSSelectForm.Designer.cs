@@ -35,7 +35,7 @@
             this.cs03Option = new System.Windows.Forms.RadioButton();
             this.cs02Option = new System.Windows.Forms.RadioButton();
             this.cs01Option = new System.Windows.Forms.RadioButton();
-            this.csAcceptButton = new System.Windows.Forms.Button();
+            this.enterButton = new System.Windows.Forms.Button();
             this.csOptionGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -107,24 +107,24 @@
             this.cs01Option.Text = "CS-01";
             this.cs01Option.UseVisualStyleBackColor = true;
             // 
-            // csAcceptButton
+            // enterButton
             // 
-            this.csAcceptButton.Location = new System.Drawing.Point(105, 224);
-            this.csAcceptButton.Name = "csAcceptButton";
-            this.csAcceptButton.Size = new System.Drawing.Size(75, 23);
-            this.csAcceptButton.TabIndex = 1;
-            this.csAcceptButton.Text = "Enter";
-            this.csAcceptButton.UseVisualStyleBackColor = true;
-            this.csAcceptButton.Click += new System.EventHandler(this.CSAcceptButtonClick);
+            this.enterButton.Location = new System.Drawing.Point(105, 224);
+            this.enterButton.Name = "enterButton";
+            this.enterButton.Size = new System.Drawing.Size(75, 23);
+            this.enterButton.TabIndex = 1;
+            this.enterButton.Text = "Enter";
+            this.enterButton.UseVisualStyleBackColor = true;
+            this.enterButton.Click += new System.EventHandler(this.EnterButtonClick);
             // 
             // CSSelectForm
             // 
-            this.AcceptButton = this.csAcceptButton;
+            this.AcceptButton = this.enterButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.ControlBox = false;
-            this.Controls.Add(this.csAcceptButton);
+            this.Controls.Add(this.enterButton);
             this.Controls.Add(this.csOptionGroupBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CSSelectForm";
@@ -143,6 +143,6 @@
         private System.Windows.Forms.RadioButton cs03Option;
         private System.Windows.Forms.RadioButton cs02Option;
         private System.Windows.Forms.RadioButton cs01Option;
-        private System.Windows.Forms.Button csAcceptButton;
+        private System.Windows.Forms.Button enterButton;
     }
 }
