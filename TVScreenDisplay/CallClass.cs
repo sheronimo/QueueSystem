@@ -2,7 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 
-namespace CustServCounter
+namespace TVScreenDisplay
 {
     /// <summary>
     /// Handles the methods for calling out the queue number

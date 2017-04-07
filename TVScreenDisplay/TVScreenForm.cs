@@ -10,7 +10,6 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Media;
-using CustServCounter;
 
 namespace TVScreenDisplay
 {
