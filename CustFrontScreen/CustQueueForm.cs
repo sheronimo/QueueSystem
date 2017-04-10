@@ -76,7 +76,7 @@ namespace CustReceptionArea
                 }
             }
 
-            //PrintQueueNumber();
+            PrintQueueNumber();
 
             // increments for next customer
             queueCount++;
@@ -136,7 +136,7 @@ namespace CustReceptionArea
 
             using (System.Drawing.Font custFont3 = new System.Drawing.Font("Arial", 10.0f, System.Drawing.FontStyle.Regular))
             {
-                e.Graphics.DrawString(DateTime.Now.ToString(), custFont3, System.Drawing.Brushes.Black, 130, 150);
+                e.Graphics.DrawString(DateTime.Now.ToString(), custFont3, System.Drawing.Brushes.Black, 120, 150);
             }
         }
     }

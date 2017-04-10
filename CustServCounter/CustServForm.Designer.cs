@@ -64,6 +64,7 @@ namespace CustServCounter
             this.queueTotalLabel = new System.Windows.Forms.Label();
             this.queueTotalTextBox = new System.Windows.Forms.TextBox();
             this.currServTextBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,14 +91,14 @@ namespace CustServCounter
             // csSelectMenuItem
             // 
             this.csSelectMenuItem.Name = "csSelectMenuItem";
-            this.csSelectMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.csSelectMenuItem.Size = new System.Drawing.Size(128, 22);
             this.csSelectMenuItem.Text = "CS Select..";
             this.csSelectMenuItem.Click += new System.EventHandler(this.CSSelectMenuItemClick);
             // 
             // exitMenuItem
             // 
             this.exitMenuItem.Name = "exitMenuItem";
-            this.exitMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitMenuItem.Size = new System.Drawing.Size(128, 22);
             this.exitMenuItem.Text = "Exit";
             this.exitMenuItem.Click += new System.EventHandler(this.ExitMenuItemClick);
             // 
@@ -112,8 +113,9 @@ namespace CustServCounter
             // aboutMenuItem
             // 
             this.aboutMenuItem.Name = "aboutMenuItem";
-            this.aboutMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aboutMenuItem.Text = "About";
+            this.aboutMenuItem.Click += new System.EventHandler(this.aboutMenuItem_Click);
             // 
             // csIDLabel
             // 
@@ -202,11 +204,22 @@ namespace CustServCounter
             this.currServTextBox.Size = new System.Drawing.Size(133, 53);
             this.currServTextBox.TabIndex = 8;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Consolas", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(1, 522);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(232, 18);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "© Trisensa Diagnostic Centre";
+            // 
             // CustServForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(764, 541);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.csIDTextBox);
             this.Controls.Add(this.csIDLabel);
             this.Controls.Add(this.currServTextBox);
@@ -230,5 +243,6 @@ namespace CustServCounter
 		}
         private System.Windows.Forms.TextBox csIDTextBox;
         private System.Windows.Forms.ToolStripMenuItem csSelectMenuItem;
+        private System.Windows.Forms.Label label1;
     }
 }

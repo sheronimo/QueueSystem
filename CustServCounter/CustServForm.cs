@@ -8,8 +8,6 @@
 using System;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.Media;
-//using System.Speech.Synthesis;
 
 namespace CustServCounter
 {
@@ -27,8 +25,8 @@ namespace CustServCounter
         /// </summary>
         public CustServForm()
 		{
-			// The InitializeComponent() call is required for Windows Forms designer support.
-			InitializeComponent();
+            // The InitializeComponent() call is required for Windows Forms designer support.
+            InitializeComponent();
 		}
 		
 		/// <summary>
@@ -52,7 +50,6 @@ namespace CustServCounter
                     currServTextBox.Text = initialServ.ToString();
                 }
             }
-
 		}
 
         /// <summary>
@@ -202,6 +199,12 @@ namespace CustServCounter
             }
         }
 
+        private void aboutMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutForm aboutForm = new AboutForm();
+            aboutForm.Show();
+        }
+
         /*
          * 3/4/17: Commented out because of change to the CS counter ID selection method.
          * Keeping code here because it might be useful for future add-on,
@@ -224,21 +227,6 @@ namespace CustServCounter
 				}// end if
 			}// end foreach
 		}// end CheckMenuItem
-        */
-
-        /*
-        /// <summary>
-        /// Calls out queue number through text-to-speech conversion.
-        /// </summary>
-        void PlayQueueTTS()
-        {
-            string substr = csIDTextBox.Text.Substring(1);
-
-            SpeechSynthesizer speaker = new SpeechSynthesizer();
-            speaker.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Adult);
-            speaker.Rate = -1;
-            speaker.SpeakAsync("Queue number " + currServTextBox.Text + ", please make your way to counter number " + substr);
-        }
         */
     }
 }
