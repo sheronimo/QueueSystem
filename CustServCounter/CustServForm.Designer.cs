@@ -113,7 +113,7 @@ namespace CustServCounter
             // aboutMenuItem
             // 
             this.aboutMenuItem.Name = "aboutMenuItem";
-            this.aboutMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutMenuItem.Text = "About";
             this.aboutMenuItem.Click += new System.EventHandler(this.aboutMenuItem_Click);
             // 
@@ -230,11 +230,13 @@ namespace CustServCounter
             this.Controls.Add(this.callButton);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "CustServForm";
             this.Text = "Qbe - CS Counter";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CustServFormClosing);
             this.Load += new System.EventHandler(this.CustServFormLoad);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CustServForm_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

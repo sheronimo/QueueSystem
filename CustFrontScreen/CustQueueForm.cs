@@ -120,14 +120,14 @@ namespace CustReceptionArea
         }
 
         /// <summary>
-        /// Draws the queue number graphic for printing.
+        /// Draws the graphic for printing.
         /// </summary>
         void PrintDoco(object sender, PrintPageEventArgs e)
         {
             using (System.Drawing.Font custFont1 = new System.Drawing.Font("Arial", 12.0f, System.Drawing.FontStyle.Regular))
             { 
                 e.Graphics.DrawString("Trisensa Diagnostic Centre", custFont1, System.Drawing.Brushes.Black, 0, 0);
-            }
+            } 
        
             using (System.Drawing.Font custFont2 = new System.Drawing.Font("Microsoft Sans Serif", 60.0f, System.Drawing.FontStyle.Bold))
             {
@@ -136,7 +136,7 @@ namespace CustReceptionArea
 
             using (System.Drawing.Font custFont3 = new System.Drawing.Font("Arial", 10.0f, System.Drawing.FontStyle.Regular))
             {
-                e.Graphics.DrawString(DateTime.Now.ToString(), custFont3, System.Drawing.Brushes.Black, 120, 150);
+                e.Graphics.DrawString(DateTime.Now.ToString("dd'/'MM'/'yyyy hh:mm:ss tt"), custFont3, System.Drawing.Brushes.Black, 0, 150);
             }
         }
     }

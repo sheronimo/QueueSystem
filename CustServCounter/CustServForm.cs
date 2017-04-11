@@ -205,6 +205,25 @@ namespace CustServCounter
             aboutForm.Show();
         }
 
+        private void CustServForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Shift)
+            {
+                if(e.KeyCode == Keys.R)
+                {
+                    RecallButtonClick(null, null);
+                }
+                else if(e.KeyCode == Keys.C)
+                {
+                    CallButtonClick(null, null);
+                }
+                else if(e.KeyCode == Keys.S)
+                {
+                    CSSelectMenuItemClick(null, null);
+                }
+            }
+        }
+
         /*
          * 3/4/17: Commented out because of change to the CS counter ID selection method.
          * Keeping code here because it might be useful for future add-on,
