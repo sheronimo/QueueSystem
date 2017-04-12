@@ -84,38 +84,61 @@ namespace TVScreenDisplay
 
         private void CS01TextBoxTextChanged(object sender, EventArgs e)
         {
-            CSIDTextBoxTextChanged(cs01TextBox, cs01Label);
+            if(!cs01TextBox.Text.StartsWith("0"))
+            {
+                string newStr = callClass.StringConvert(Convert.ToInt32(cs01TextBox.Text));
+                callClass.CallIntro();
+                callClass.CallQueue(newStr);
+                callClass.CallToCounter();
+                callClass.CallCounterNumber(Convert.ToInt32(cs01Label.Text.Substring(4)));
+            }         
         }
 
         private void CS02TextBoxTextChanged(object sender, EventArgs e)
         {
-            CSIDTextBoxTextChanged(cs02TextBox, cs02Label);
+            if (!cs02TextBox.Text.StartsWith("0"))
+            {
+                string newStr = callClass.StringConvert(Convert.ToInt32(cs02TextBox.Text));
+                callClass.CallIntro();
+                callClass.CallQueue(newStr);
+                callClass.CallToCounter();
+                callClass.CallCounterNumber(Convert.ToInt32(cs02Label.Text.Substring(4)));
+            }
         }
 
         private void CS03TextBoxTextChanged(object sender, EventArgs e)
         {
-            CSIDTextBoxTextChanged(cs03TextBox, cs03Label);
+            if (!cs03TextBox.Text.StartsWith("0"))
+            {
+                string newStr = callClass.StringConvert(Convert.ToInt32(cs03TextBox.Text));
+                callClass.CallIntro();
+                callClass.CallQueue(newStr);
+                callClass.CallToCounter();
+                callClass.CallCounterNumber(Convert.ToInt32(cs03Label.Text.Substring(4)));
+            }
         }
 
         private void CS04TextBoxTextChanged(object sender, EventArgs e)
         {
-            CSIDTextBoxTextChanged(cs04TextBox, cs04Label);
+            if (!cs04TextBox.Text.StartsWith("0"))
+            {
+                string newStr = callClass.StringConvert(Convert.ToInt32(cs04TextBox.Text));
+                callClass.CallIntro();
+                callClass.CallQueue(newStr);
+                callClass.CallToCounter();
+                callClass.CallCounterNumber(Convert.ToInt32(cs04Label.Text.Substring(4)));
+            }
         }
 
         private void CS05TextBoxTextChanged(object sender, EventArgs e)
         {
-            CSIDTextBoxTextChanged(cs05TextBox, cs05Label);
-        }
-
-        private void CSIDTextBoxTextChanged(TextBox csIDTextBox, Label csIDLabel)
-        {
-            if(!csIDTextBox.Text.StartsWith("0"))
+            if (!cs05TextBox.Text.StartsWith("0"))
             {
-                string newStr = callClass.StringConvert(Convert.ToInt32(csIDTextBox.Text));
+                string newStr = callClass.StringConvert(Convert.ToInt32(cs05TextBox.Text));
                 callClass.CallIntro();
                 callClass.CallQueue(newStr);
                 callClass.CallToCounter();
-                callClass.CallCounterNumber(Convert.ToInt32(csIDLabel.Text.Substring(4)));
+                callClass.CallCounterNumber(Convert.ToInt32(cs05Label.Text.Substring(4)));
             }
         }
     }
