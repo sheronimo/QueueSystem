@@ -18,7 +18,7 @@ namespace CustReceptionArea
 	/// </summary>
 	public partial class CustQueueForm : Form
 	{
-        int queueCount = 1;
+        int queueCount = 0;
         Timer timer = new Timer { Interval = 100 };
         string connectionString = "Data Source=192.168.0.32,61945;Initial Catalog=SHERBASE;Persist Security Info=True;User ID=sher;Password=sher";
 
@@ -36,9 +36,38 @@ namespace CustReceptionArea
         /// </summary>
         private void CustQueueFormLoad(object sender, EventArgs e)
         {
-            queueNumTextBox.Text = queueCount.ToString();
+            InitialiseQueueNum(queueNumTextBox);
             timer.Tick += new EventHandler(TimerTick);
             timer.Start();
+        }
+
+        /// <summary>
+        /// In case program crashes and we want to resume the queue count
+        /// for the day instead of starting over.
+        /// </summary>
+        /// <param name="queueBox"></param>
+        private void InitialiseQueueNum(TextBox queueBox)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand queueInitCommand = new SqlCommand("SELECT TOP(1) QueueNum FROM QUEUE ORDER BY QueueNum DESC", connection))
+                {
+                    queueCount = Convert.ToInt32(queueInitCommand.ExecuteScalar());
+
+                    if(queueCount > 0)
+                    {
+                        queueCount++;
+                    }
+                    else
+                    {
+                        queueCount = 1;
+                    }
+
+                    queueBox.Text = queueCount.ToString();
+                }
+            }
         }
 
         /// <summary>
@@ -76,15 +105,19 @@ namespace CustReceptionArea
                 }
             }
 
-            PrintQueueNumber();
+            try
+            {
+                PrintQueueNumber();
+            }
+            catch(InvalidPrinterException ex)
+            {
+                MessageBox.Show("An exception just occurred: " + ex.Message, "Exception!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
 
             // increments for next customer
             queueCount++;
 
-            if (queueCount > 1)
-            {
-                queueNumTextBox.Text = queueCount.ToString();
-            }       
+            queueNumTextBox.Text = queueCount.ToString();       
         }
 
         /// <summary>
@@ -114,7 +147,7 @@ namespace CustReceptionArea
         {
             PrintDocument printDoc = new PrintDocument();
             printDoc.PrinterSettings.PrinterName = "Epson TM-U220 Receipt";
-            printDoc.PrintPage += PrintDoco;
+            printDoc.PrintPage += DrawPage;
 
             printDoc.Print();
         }
@@ -122,7 +155,7 @@ namespace CustReceptionArea
         /// <summary>
         /// Draws the graphic for printing.
         /// </summary>
-        void PrintDoco(object sender, PrintPageEventArgs e)
+        private void DrawPage(object sender, PrintPageEventArgs e)
         {
             using (System.Drawing.Font custFont1 = new System.Drawing.Font("Arial", 12.0f, System.Drawing.FontStyle.Regular))
             { 
