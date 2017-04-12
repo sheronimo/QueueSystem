@@ -50,6 +50,8 @@ namespace CustServCounter
                     currServTextBox.Text = initialServ.ToString();
                 }
             }
+
+            keyboardShortcutsToolStripMenuItem.Checked = true;
 		}
 
         /// <summary>
@@ -221,6 +223,33 @@ namespace CustServCounter
                 {
                     CSSelectMenuItemClick(null, null);
                 }
+            }
+            else if(e.KeyCode == Keys.F2)
+            {
+                if(groupBox1.Visible == true)
+                {
+                    groupBox1.Visible = false;
+                    keyboardShortcutsToolStripMenuItem.Checked = false;
+                }
+                else
+                {
+                    groupBox1.Visible = true;
+                    keyboardShortcutsToolStripMenuItem.Checked = true;
+                }
+            }
+        }
+
+        private void keyboardShortcutsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(groupBox1.Visible)
+            {
+                groupBox1.Visible = false;
+                keyboardShortcutsToolStripMenuItem.Checked = false;
+            }
+            else
+            {
+                groupBox1.Visible = true;
+                keyboardShortcutsToolStripMenuItem.Checked = true;
             }
         }
 
