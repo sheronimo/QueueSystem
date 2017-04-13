@@ -71,7 +71,7 @@ namespace CustServCounter
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.keyboardShortcutsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.keyShortsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -122,7 +122,7 @@ namespace CustServCounter
             // aboutMenuItem
             // 
             this.aboutMenuItem.Name = "aboutMenuItem";
-            this.aboutMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aboutMenuItem.Text = "About";
             this.aboutMenuItem.Click += new System.EventHandler(this.aboutMenuItem_Click);
             // 
@@ -275,17 +275,17 @@ namespace CustServCounter
             // viewToolStripMenuItem
             // 
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.keyboardShortcutsToolStripMenuItem});
+            this.keyShortsMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.viewToolStripMenuItem.Text = "View";
             // 
-            // keyboardShortcutsToolStripMenuItem
+            // keyShortsMenuItem
             // 
-            this.keyboardShortcutsToolStripMenuItem.Name = "keyboardShortcutsToolStripMenuItem";
-            this.keyboardShortcutsToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
-            this.keyboardShortcutsToolStripMenuItem.Text = "Keyboard Shortcuts";
-            this.keyboardShortcutsToolStripMenuItem.Click += new System.EventHandler(this.keyboardShortcutsToolStripMenuItem_Click);
+            this.keyShortsMenuItem.Name = "keyShortsMenuItem";
+            this.keyShortsMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.keyShortsMenuItem.Text = "Keyboard Shortcuts";
+            this.keyShortsMenuItem.Click += new System.EventHandler(this.KeyShortsMenuItemClick);
             // 
             // CustServForm
             // 
@@ -328,6 +328,6 @@ namespace CustServCounter
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem keyboardShortcutsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem keyShortsMenuItem;
     }
 }

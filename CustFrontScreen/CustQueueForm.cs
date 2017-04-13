@@ -45,7 +45,7 @@ namespace CustReceptionArea
         /// In case program crashes and we want to resume the queue count
         /// for the day instead of starting over.
         /// </summary>
-        /// <param name="queueBox"></param>
+        /// <param name="queueBox">Textbox containing the queue number.</param>
         private void InitialiseQueueNum(TextBox queueBox)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))

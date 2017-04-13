@@ -51,7 +51,7 @@ namespace CustServCounter
                 }
             }
 
-            keyboardShortcutsToolStripMenuItem.Checked = true;
+            keyShortsMenuItem.Checked = true;
 		}
 
         /// <summary>
@@ -207,6 +207,9 @@ namespace CustServCounter
             aboutForm.Show();
         }
 
+        /// <summary>
+        /// Funky keyboard shortcuts for the form controls.
+        /// </summary>
         private void CustServForm_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.Shift)
@@ -229,27 +232,27 @@ namespace CustServCounter
                 if(groupBox1.Visible == true)
                 {
                     groupBox1.Visible = false;
-                    keyboardShortcutsToolStripMenuItem.Checked = false;
+                    keyShortsMenuItem.Checked = false;
                 }
                 else
                 {
                     groupBox1.Visible = true;
-                    keyboardShortcutsToolStripMenuItem.Checked = true;
+                    keyShortsMenuItem.Checked = true;
                 }
             }
         }
 
-        private void keyboardShortcutsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void KeyShortsMenuItemClick(object sender, EventArgs e)
         {
             if(groupBox1.Visible)
             {
                 groupBox1.Visible = false;
-                keyboardShortcutsToolStripMenuItem.Checked = false;
+                keyShortsMenuItem.Checked = false;
             }
             else
             {
                 groupBox1.Visible = true;
-                keyboardShortcutsToolStripMenuItem.Checked = true;
+                keyShortsMenuItem.Checked = true;
             }
         }
 
