@@ -18,7 +18,7 @@ namespace CustServCounter
 	public partial class CustServForm : Form
 	{
 		Timer timer = new Timer { Interval = 100 };
-        string connectionString = "Data Source=192.168.0.32,61945;Network Library = DBMSSOCN;Initial Catalog=SHERBASE;User ID=sher;Password=sher";
+        string connectionString = "Data Source=192.168.0.122,61945;Network Library = DBMSSOCN;Initial Catalog=QUEUEBASE;User ID=potato;Password=potato";
 
         /// <summary>
         /// Default constructor for the form class.
@@ -72,7 +72,7 @@ namespace CustServCounter
         }
 
         /// <summary>
-        /// Fully closes program when tool strip button is clicked.
+        /// Fully closes program when Exit menu item is clicked.
         /// </summary>
         void ExitMenuItemClick(object sender, EventArgs e)
 		{
@@ -141,6 +141,7 @@ namespace CustServCounter
                 {
                     connection.Open();
 
+                    // a little fiddly, but a placeholder flag
                     using (SqlCommand updateCommand1 = new SqlCommand("UPDATE CURRENTQUEUE SET QUEUENUMBER = @queuenum WHERE CSNUM = @CSNum", connection))
                     {
                         updateCommand1.Parameters.Add(new SqlParameter("queuenum", "0" + currServTextBox.Text));
@@ -201,14 +202,17 @@ namespace CustServCounter
             }
         }
 
-        private void aboutMenuItem_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Shows the About window. 
+        /// </summary>
+        private void AboutMenuItemClick(object sender, EventArgs e)
         {
             AboutForm aboutForm = new AboutForm();
             aboutForm.Show();
         }
 
         /// <summary>
-        /// Funky keyboard shortcuts for the form controls.
+        /// Fun keyboard shortcuts for the form controls.
         /// </summary>
         private void CustServForm_KeyDown(object sender, KeyEventArgs e)
         {
@@ -242,6 +246,9 @@ namespace CustServCounter
             }
         }
 
+        /// <summary>
+        /// Functionality to show/hide the keyboard shortcut box.
+        /// </summary>
         private void KeyShortsMenuItemClick(object sender, EventArgs e)
         {
             if(groupBox1.Visible)
@@ -259,7 +266,7 @@ namespace CustServCounter
         /*
          * 3/4/17: Commented out because of change to the CS counter ID selection method.
          * Keeping code here because it might be useful for future add-on,
-         * i.e. switching interface language.
+         * maybe switching interface language between English and Bahasa Indonesia.
          * 
 		/// <summary>
 		/// Unchecks all items in submenu except for the clicked item.
@@ -275,9 +282,9 @@ namespace CustServCounter
 				{
 					ToolStripMenuItem childMenuItem = childItem as ToolStripMenuItem;
 					childMenuItem.Checked = (childMenuItem == checkedMenuItem);
-				}// end if
-			}// end foreach
-		}// end CheckMenuItem
+				}
+			}
+		}
         */
     }
 }

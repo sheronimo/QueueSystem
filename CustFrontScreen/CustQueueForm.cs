@@ -20,7 +20,7 @@ namespace CustReceptionArea
 	{
         int queueCount = 0;
         Timer timer = new Timer { Interval = 100 };
-        string connectionString = "Data Source=192.168.0.32,61945;Initial Catalog=SHERBASE;Persist Security Info=True;User ID=sher;Password=sher";
+        string connectionString = "Data Source=192.168.0.122,61945;Network Library = DBMSSOCN;Initial Catalog=QUEUEBASE;Persist Security Info=True;User ID=potato;Password=potato";
 
         /// <summary>
         /// Default constructor for the form class.
@@ -88,7 +88,7 @@ namespace CustReceptionArea
         }
 
         /// <summary>
-        /// Adds queue number to database table "Queue" to be used by other programs.
+        /// Adds queue number to database table "Queue" to be used by other forms.
         /// Queue number is also displayed for customers' convenience.
         /// </summary>
         private void TakeNumButtonClick(object sender, EventArgs e)
@@ -105,6 +105,7 @@ namespace CustReceptionArea
                 }
             }
 
+            // exception handling for printer connection
             try
             {
                 PrintQueueNumber();

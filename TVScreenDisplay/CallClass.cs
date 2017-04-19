@@ -22,7 +22,7 @@ namespace TVScreenDisplay
 
         /// <summary>
         /// Converts a number to its verbal representation (e.g. 1 to "one"),
-        /// but in Bahasa Indonesia instead of English.
+        /// but in Bahasa Indonesia instead of English (so 1 to "satu").
         /// </summary>
         /// <param name="number">The queue number from the form.</param>
         /// <returns>The queue number's verbal representation as a string.</returns>

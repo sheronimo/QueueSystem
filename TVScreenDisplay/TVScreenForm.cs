@@ -21,7 +21,7 @@ namespace TVScreenDisplay
     public partial class TVScreenForm : Form
     {
         Timer timer = new Timer { Interval = 50 };
-        string connectionString = "Data Source=192.168.0.32,61945;Initial Catalog=SHERBASE;Persist Security Info=True;User ID=sher;Password=sher";
+        string connectionString = "Data Source=192.168.0.122,61945;Initial Catalog=QUEUEBASE;Persist Security Info=True;User ID=potato;Password=potato";
         CallClass callClass = new CallClass();
 
         /// <summary>
@@ -107,6 +107,10 @@ namespace TVScreenDisplay
             CSIDTextBoxTextChanged(cs05TextBox, cs05Label);
         }
 
+        /// <summary>
+        /// Plays audio to call customers when the CS textboxes
+        /// update with new values.
+        /// </summary>
         private void CSIDTextBoxTextChanged(TextBox csIDTextBox, Label csIDLabel)
         {
             if(!csIDTextBox.Text.StartsWith("0"))
